@@ -44,10 +44,28 @@ environment without unrelated credentials.
 
 ## Updates
 
-Let current work finish, stop the worker, and repeat the download/install commands above in a fresh
-temporary directory. Then restart `imd start`. `imd update` prints the release installation steps.
-Updating this repository does not force updates onto installed workers. Automatic checkout updates
-are unavailable for release installations.
+To enable automatic updates, add `--auto-update` to your usual start command:
+
+```sh
+imd start --auto-update --concurrency 1
+```
+
+The worker checks the latest GitHub release when it starts and every five minutes. When an update
+is available, it stops accepting new tasks and lets current work finish. It downloads the release
+using your GitHub CLI authentication, verifies the checksum, and tests an offline installation in
+a temporary directory before replacing this global installation. It then restarts with the same
+start options. If checking, downloading, or preparing the update fails, the existing worker keeps
+running and resumes accepting tasks. It retries failed updates with a delay that grows from one to
+fifteen minutes.
+
+Keep `gh` installed and authenticated with an account that can read this repository while it is
+private. The global installation must be writable by your user; the updater does not request sudo.
+Without `--auto-update`, updates remain manual: let current work finish, stop the worker, run
+`imd update`, then start it again with your usual options.
+
+If your current `imd update` only prints installation instructions, repeat the download/install
+commands above once to get a release with the updater. Then start with `--auto-update` to receive
+future releases automatically. Updating the repository alone does not change installed workers.
 
 Config and the private device key live in `~/.identitymd/config.json`; retain this directory during
 updates. Never share its private key. The outbox in that directory preserves completed results
