@@ -1,0 +1,32 @@
+name: release worker
+on:
+  push:
+    tags: ['worker-v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing worker-v release tag to publish or retry
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: worker-release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify and publish the private GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: node scripts/release.mjs

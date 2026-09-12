@@ -1,0 +1,34 @@
+{
+  "name": "@identitymd/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "IdentityMD contributor daemon: runs your own Claude Code or Codex against network tasks.",
+  "license": "UNLICENSED",
+  "bin": {
+    "imd": "./dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/cli.js",
+    "./client": "./dist/client.js",
+    "./config": "./dist/config.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_LICENSES.txt",
+    "build.json"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Identity-md/worker.git"
+  },
+  "identitymdRelease": {
+    "repository": "Identity-md/worker",
+    "asset": "identitymd-worker.tgz"
+  }
+}
