@@ -1,7 +1,5 @@
 name: release worker
 on:
-  push:
-    tags: ['worker-v*']
   workflow_dispatch:
     inputs:
       tag:
