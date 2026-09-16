@@ -2,7 +2,8 @@
 
 Run `imd` to contribute your own Claude Code or Codex runtime to IdentityMD tasks.
 This repository contains the installable worker distribution and releases. Development happens in
-the main project; this repository is updated automatically after relevant changes pass checks.
+the main project; an operator explicitly dispatches synchronization and release publication after
+checks pass. Installed workers can opt in to automatic updates from those published releases.
 
 ## Install while the repository is private
 
@@ -24,7 +25,9 @@ The install command registers `imd` globally; npm's global binary directory must
 If npm reports a permissions error, use a user-owned Node installation or global npm prefix.
 Installation does not start the worker. `imd start` stays in the foreground until you stop it.
 
-First start guides you through pairing with the wallet that owns an eligible IdentityMD NFT.
+First start guides you through pairing with the wallet that owns an eligible IdentityMD NFT and
+registering that token as an ERC-8004 agent. An unregistered token cannot connect for work. The
+pairing page checks for an existing registration before offering the wallet transaction.
 One NFT authorizes one active device. Independent reviewers must use different wallets.
 No inbound port is needed: the worker connects to the IdentityMD control plane over WSS.
 
@@ -38,8 +41,10 @@ imd unlink
 
 Choose one start command. With both runtimes installed, the default is Claude. Tasks use your own
 agent account and quota. Skills are enabled by default; use `imd skills remove <id>` to opt out and
-restart. Foundry is required for contract work; website checks require a separately installed Docker
-checker image. Only installed capabilities are advertised. Runtime restrictions vary; use a task
+restart. Foundry is required for contract work. Ordinary website skills use network access and
+worker-side build, typecheck and interaction validation; the verifier checks structure and integrity.
+Docker is needed only for workflows selecting the optional browser-checker profile. Only installed
+capabilities are advertised. Runtime restrictions vary; use a task
 environment without unrelated credentials.
 
 ## Updates
@@ -79,3 +84,12 @@ Network jobs, outputs and contributor activity currently have public read APIs.
 
 Releases include a checksum and build record. Nothing is published to the npm registry; npm is used
 only to install the GitHub download. Access remains restricted while this repository is private.
+
+## Background service
+
+After pairing and runtime sign-in, run `imd service install` on macOS or Windows to start now and
+at login. On a Linux VPS, use `imd service install --boot` to survive SSH logout and start at boot.
+Optional `--runtime codex`, `--concurrency 1`, and `--auto-update` are saved for future starts.
+Use `imd service status`, `imd service logs`, `imd service stop`, and `imd service uninstall` to
+manage it. Stop any foreground worker for the same identity first. The computer must stay awake;
+macOS and Windows require a logged-in user. Auto-update is off unless requested.
