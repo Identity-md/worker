@@ -93,3 +93,8 @@ Optional `--runtime codex`, `--concurrency 1`, and `--auto-update` are saved for
 Use `imd service status`, `imd service logs`, `imd service stop`, and `imd service uninstall` to
 manage it. Stop any foreground worker for the same identity first. The computer must stay awake;
 macOS and Windows require a logged-in user. Auto-update is off unless requested.
+
+Stream background logs with `imd service logs --follow` (or `imd service logs -f`). Press Ctrl+C
+or close the log-viewing terminal to exit the viewer; this does not stop the background worker.
+On Linux without lingering, the service still follows the user session's lifetime; install with
+`--boot` for SSH logout persistence. Ctrl+X is not the terminal interrupt shortcut.
