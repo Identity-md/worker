@@ -98,3 +98,7 @@ Stream background logs with `imd service logs --follow` (or `imd service logs -f
 or close the log-viewing terminal to exit the viewer; this does not stop the background worker.
 On Linux without lingering, the service still follows the user session's lifetime; install with
 `--boot` for SSH logout persistence. Ctrl+X is not the terminal interrupt shortcut.
+
+Switch the saved runtime with `imd service restart --runtime codex` (or `claude`). This interrupts
+current work and preserves other service settings. Persistent runtime rate limits release the stopped
+attempt after a short retry window and pause new work for five minutes.
