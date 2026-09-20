@@ -9,8 +9,6 @@ const repository = 'Identity-md/worker';
 const run = (command, args, options = {}) => execFileSync(command, args, {
   encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], ...options,
 });
-const meta = JSON.parse(run('gh', ['api', `repos/${repository}`]));
-if (!meta.private) throw new Error('The worker repository must remain private.');
 const build = JSON.parse(await readFile('build.json', 'utf8'));
 const manifest = JSON.parse(await readFile('package.json', 'utf8'));
 const expected = `worker-v${manifest.version}-${build.sourceCommit.slice(0, 12)}`;
@@ -45,11 +43,11 @@ try {
     console.log(`Release ${tag} already published with the same checksum.`);
   } else {
     const notes = join(temporary, 'notes.md');
-    await writeFile(notes, `Worker ${build.daemonVersion}.\n\nInstall the attached identitymd-worker.tgz with npm install -g. This release remains private; authenticated GitHub access is required.\n\nSHA-256: \`${hash}\`\n`);
+    await writeFile(notes, `Worker ${build.daemonVersion}.\n\nInstall the attached identitymd-worker.tgz with npm install -g. Releases are public downloads; the README covers download, checksum verification and installation.\n\nSHA-256: \`${hash}\`\n`);
     if (!existing) run('gh', ['release', 'create', tag, '--repo', repository, '--verify-tag', '--draft', '--title', `Worker ${build.daemonVersion}`, '--notes-file', notes]);
     run('gh', ['release', 'upload', tag, archive, sums, 'build.json', '--repo', repository, '--clobber']);
     run('gh', ['release', 'edit', tag, '--repo', repository, '--draft=false', `--latest=${isLatest}`]);
-    console.log(`Published private release ${tag}.`);
+    console.log(`Published release ${tag}.`);
   }
 } finally {
   await rm(temporary, { recursive: true, force: true });
