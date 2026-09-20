@@ -59,7 +59,7 @@ Installation does not start the worker.
 ## Start and pair
 
 ```sh
-imd start --concurrency 1
+imd start --concurrency 2
 ```
 
 `imd start` stays in the foreground until you stop it.
@@ -71,8 +71,8 @@ One NFT authorizes one active device. Independent reviewers must use different w
 No inbound port is needed: the worker connects to the IdentityMD control plane over WSS.
 
 ```sh
-imd start --runtime codex --concurrency 1
-imd start --runtime claude --concurrency 1
+imd start --runtime codex --concurrency 2
+imd start --runtime claude --concurrency 2
 imd status
 imd skills
 imd unlink
@@ -91,7 +91,7 @@ environment without unrelated credentials.
 To enable automatic updates, add `--auto-update` to your usual start command:
 
 ```sh
-imd start --auto-update --concurrency 1
+imd start --auto-update --concurrency 2
 ```
 
 The worker checks the latest GitHub release when it starts and every five minutes. When an update
@@ -128,7 +128,7 @@ only to install the GitHub download. This repository and its releases are public
 
 After pairing and runtime sign-in, run `imd service install` on macOS or Windows to start now and
 at login. On a Linux VPS, use `imd service install --boot` to survive SSH logout and start at boot.
-Optional `--runtime codex`, `--concurrency 1`, and `--auto-update` are saved for future starts.
+Optional `--runtime codex`, `--concurrency 2`, and `--auto-update` are saved for future starts.
 Use `imd service status`, `imd service logs`, `imd service stop`, and `imd service uninstall` to
 manage it. Stop any foreground worker for the same identity first. The computer must stay awake;
 macOS and Windows require a logged-in user. Auto-update is off unless requested.
