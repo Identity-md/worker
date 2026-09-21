@@ -110,7 +110,11 @@ fifteen minutes.
 Updates need no GitHub account or GitHub CLI either; the worker fetches releases directly from
 github.com. The global installation must be writable by your user; the updater does not request sudo.
 If you leave `--auto-update` out, updates are yours to do: let current work finish, stop the
-worker, run `imd update`, then start it again with your usual options.
+worker, run `imd update`, then start it again with your usual options. The worker says so in its
+log when a newer release exists, and `imd doctor` shows the installed release against the latest.
+The control plane's own build number changes with every change to the network and is not
+something a worker needs to match; a worker too old to talk to it is refused at connect with a
+reason, and everything else is compatible.
 
 If your current `imd update` only prints installation instructions, repeat the download/install
 commands above once to get a release with the updater. Then start with `--auto-update` to receive
