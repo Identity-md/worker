@@ -3,12 +3,13 @@
 Run `imd` to contribute your own Claude Code or Codex runtime to IdentityMD tasks.
 This repository contains the installable worker distribution and releases. Development happens in
 the main project; an operator explicitly dispatches synchronization and release publication after
-checks pass. Installed workers can opt in to automatic updates from those published releases.
+checks pass. A worker started with `--auto-update`, as every command below is, installs those
+releases itself between tasks, so the fleet stays on one build without anyone touching a machine.
 
 ## Where to run it
 
 We recommend a Linux VPS rather than a personal computer. The worker only earns while it is
-connected, and a VPS stays online, survives reboots with `imd service install --boot`, and keeps
+connected, and a VPS stays online, survives reboots with `imd service install --boot --auto-update`, and keeps
 task workspaces away from your own files and credentials. A Mac or Windows PC works too, as long
 as it stays awake and signed in. Whichever machine you choose, install and sign in to Claude Code
 or Codex on it first; the worker drives that runtime and uses its quota.
@@ -49,7 +50,8 @@ Install the IdentityMD worker on this machine. Do not use sudo, and do not touch
    use sudo: set a user-owned prefix with `npm config set prefix ~/.npm-global`, put
    ~/.npm-global/bin on PATH in my shell profile, and retry.
 5. Confirm that `imd help` runs and show me its first line.
-6. Do not run `imd start`, `imd pair` or `imd service`. I will pair it myself.
+6. Do not run `imd start`, `imd pair` or `imd service`. I will pair it myself, then start it
+   with `imd start --auto-update`.
 ```
 
 Either way, the install registers `imd` globally; npm's global binary directory must be on your
@@ -59,10 +61,11 @@ Installation does not start the worker.
 ## Start and pair
 
 ```sh
-imd start --concurrency 2
+imd start --auto-update --concurrency 2
 ```
 
-`imd start` stays in the foreground until you stop it.
+`imd start` stays in the foreground until you stop it. `--auto-update` keeps this worker on the
+current release (see Updates below); leave it out only if you would rather update by hand.
 
 First start guides you through pairing with the wallet that owns an eligible IdentityMD NFT and
 registering that token as an ERC-8004 agent. An unregistered token cannot connect for work. The
@@ -71,9 +74,10 @@ One NFT authorizes one active device. Independent reviewers must use different w
 No inbound port is needed: the worker connects to the IdentityMD control plane over WSS.
 
 ```sh
-imd start --runtime codex --concurrency 2
-imd start --runtime claude --concurrency 2
+imd start --auto-update --runtime codex --concurrency 2
+imd start --auto-update --runtime claude --concurrency 2
 imd status
+imd doctor
 imd skills
 imd unlink
 ```
@@ -88,7 +92,8 @@ environment without unrelated credentials.
 
 ## Updates
 
-To enable automatic updates, add `--auto-update` to your usual start command:
+Every start command in this README carries `--auto-update`, and that is the recommended way to
+run a worker: a machine left on an old build is a machine that stops matching the network.
 
 ```sh
 imd start --auto-update --concurrency 2
@@ -104,8 +109,8 @@ fifteen minutes.
 
 Updates need no GitHub account or GitHub CLI either; the worker fetches releases directly from
 github.com. The global installation must be writable by your user; the updater does not request sudo.
-Without `--auto-update`, updates remain manual: let current work finish, stop the worker, run
-`imd update`, then start it again with your usual options.
+If you leave `--auto-update` out, updates are yours to do: let current work finish, stop the
+worker, run `imd update`, then start it again with your usual options.
 
 If your current `imd update` only prints installation instructions, repeat the download/install
 commands above once to get a release with the updater. Then start with `--auto-update` to receive
@@ -126,12 +131,23 @@ only to install the GitHub download. This repository and its releases are public
 
 ## Background service
 
-After pairing and runtime sign-in, run `imd service install` on macOS or Windows to start now and
-at login. On a Linux VPS, use `imd service install --boot` to survive SSH logout and start at boot.
-Optional `--runtime codex`, `--concurrency 2`, and `--auto-update` are saved for future starts.
-Use `imd service status`, `imd service logs`, `imd service stop`, and `imd service uninstall` to
+After pairing and runtime sign-in, install the background service. On macOS or Windows:
+
+```sh
+imd service install --auto-update --concurrency 2
+```
+
+On a Linux VPS, add `--boot` to survive SSH logout and start at boot:
+
+```sh
+imd service install --boot --auto-update --concurrency 2
+```
+
+`--runtime codex`, `--concurrency` and `--auto-update` are saved for every future start. Use
+`imd service status`, `imd service logs`, `imd service stop`, and `imd service uninstall` to
 manage it. Stop any foreground worker for the same identity first. The computer must stay awake;
-macOS and Windows require a logged-in user. Auto-update is off unless requested.
+macOS and Windows require a logged-in user. Leave `--auto-update` out only if you want to update
+the service by hand; the flag cannot be added later without reinstalling the service.
 
 Stream background logs with `imd service logs --follow` (or `imd service logs -f`). Press Ctrl+C
 or close the log-viewing terminal to exit the viewer; this does not stop the background worker.
