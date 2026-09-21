@@ -42,11 +42,15 @@ try {
     if (published !== await readFile(sums, 'utf8')) throw new Error('Existing release has different bytes; refusing to replace it.');
     console.log(`Release ${tag} already published with the same checksum.`);
   } else {
+    // What changed comes from RELEASE_NOTES.md, written by the sync beside build.json; the page
+    // then says how to install and what the archive hashes to.
+    let changed = '';
+    try { changed = (await readFile('RELEASE_NOTES.md', 'utf8')).replace(/^# .*\n+/, '').trim(); } catch (error) { if (error.code !== 'ENOENT') throw error; }
     const notes = join(temporary, 'notes.md');
-    await writeFile(notes, `Worker ${build.daemonVersion}.\n\nInstall the attached identitymd-worker.tgz with npm install -g. Releases are public downloads; the README covers download, checksum verification and installation.\n\nSHA-256: \`${hash}\`\n`);
+    await writeFile(notes, `${changed ? `${changed}\n\n` : ''}## Install\n\nInstall the attached identitymd-worker.tgz with npm install -g, or run \`imd update\` on a machine that already has the worker. Releases are public downloads; the README covers download, checksum verification and installation.\n\nSHA-256: \`${hash}\`\n`);
     if (!existing) run('gh', ['release', 'create', tag, '--repo', repository, '--verify-tag', '--draft', '--title', `Worker ${build.daemonVersion}`, '--notes-file', notes]);
     run('gh', ['release', 'upload', tag, archive, sums, 'build.json', '--repo', repository, '--clobber']);
-    run('gh', ['release', 'edit', tag, '--repo', repository, '--draft=false', `--latest=${isLatest}`]);
+    run('gh', ['release', 'edit', tag, '--repo', repository, '--draft=false', `--latest=${isLatest}`, '--notes-file', notes]);
     console.log(`Published release ${tag}.`);
   }
 } finally {

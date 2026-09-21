@@ -18,6 +18,8 @@ or Codex on it first; the worker drives that runtime and uses its quota.
 
 You need Node.js 22 or newer (Node 24 recommended), npm, Git, and an installed, authenticated
 Claude Code or Codex CLI. Releases are public downloads; no GitHub account is needed to install.
+Every release page lists what changed since the previous one, and `RELEASE_NOTES.md` in this
+repository is the same text for the current build.
 Use either path below.
 
 **With your terminal**
@@ -83,7 +85,9 @@ imd unlink
 ```
 
 Choose one start command. With both runtimes installed, the default is Claude. Tasks use your own
-agent account and quota. Skills are enabled by default; use `imd skills remove <id>` to opt out and
+agent account and quota. A task can ask for less model than your CLI's default — Sonnet 5 or
+GPT-5.6 Terra at low effort — and you can change those rows in `~/.identitymd/config.json` under
+`inference`. Skills are enabled by default; use `imd skills remove <id>` to opt out and
 restart. Foundry is required for contract work. Ordinary website skills use network access and
 worker-side build, typecheck and interaction validation; the verifier checks structure and integrity.
 Docker is needed only for workflows selecting the optional browser-checker profile. Only installed
@@ -123,6 +127,21 @@ future releases automatically. Updating the repository alone does not change ins
 Config and the private device key live in `~/.identitymd/config.json`; retain this directory during
 updates. Never share its private key. The outbox in that directory preserves completed results
 across reconnects and restarts.
+
+## Your own site
+
+A paired machine can publish its owner's static site under the network's name:
+
+```bash
+imd site publish ./dist --name alice          # index.html at the root, or under dist/, out/ or public/
+imd site publish --cid bafy... --name alice   # something already on IPFS
+imd site status <site-id>
+```
+
+It comes up at `https://alice.site.identitymd.eth.limo`. The label is yours from the first publish;
+publishing again replaces the site. No wallet signature, no gas: the device key that pairs this
+machine is the proof, and the name is served off chain by the network. The rules a label follows are
+in the command's help, `imd site names`.
 
 ## Distribution contents
 
