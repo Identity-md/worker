@@ -1,7 +1,8 @@
-# Worker 0.1.0+5e34612c
+# Worker 0.1.0+56872758
 
-## What changed since worker-v0.1.0-285d19840102
+## What changed since worker-v0.1.0-5e34612c2351
 
-- Oracle: the skill asks for the economy tier, and the script does the parts the small models got wrong
+- Support token-only launches and require premium Claude or Codex workers
+- Set launch rewards split and 20 ETH opening valuation
 
-Source commit `5e34612c2351`.
+Source commit `56872758cbe6`.
