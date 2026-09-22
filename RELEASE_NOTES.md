@@ -1,8 +1,8 @@
-# Worker 0.1.0+56872758
+# Worker 0.1.0+79f4f4d5
 
-## What changed since worker-v0.1.0-5e34612c2351
+## What changed since worker-v0.1.0-56872758cbe6
 
-- Support token-only launches and require premium Claude or Codex workers
-- Set launch rewards split and 20 ETH opening valuation
+- Require premium-capable CLIs and premium models for deployed frontends
+- Record WORK factory deployment and prepared workflow submission
 
-Source commit `56872758cbe6`.
+Source commit `79f4f4d51a54`.
