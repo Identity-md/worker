@@ -1,7 +1,7 @@
-# Worker 0.1.0+50bb666f
+# Worker 0.1.0+5bfa8261
 
-## What changed since worker-v0.1.0-cff23c398960
+## What changed since worker-v0.1.0-50bb666f5100
 
-- Tell a killed build from a failed one: retry it on one thread, never repair it, submit for the verifier
+- Plane: cap the log buffer, log only failed or slow requests
 
-Source commit `50bb666f5100`.
+Source commit `5bfa82612889`.
