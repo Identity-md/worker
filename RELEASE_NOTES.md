@@ -1,7 +1,7 @@
-# Worker 0.1.0+852666b2
+# Worker 0.1.0+8f011f3d
 
-## What changed since worker-v0.1.0-47df9c68fe0d
+## What changed since worker-v0.1.0-852666b2e0ab
 
-- Let every worker install the next release again, and check upgrades before publishing
+- Hand every deployment frontend the vetted chain and its Uniswap addresses
 
-Source commit `852666b2e0ab`.
+Source commit `8f011f3db1e1`.
