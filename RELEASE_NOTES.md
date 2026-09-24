@@ -1,7 +1,8 @@
-# Worker 0.1.0+ff3932db
+# Worker 0.1.0+47df9c68
 
-## What changed since worker-v0.1.0-aa8ff6ee4dbf
+## What changed since worker-v0.1.0-ff3932db9017
 
-- Fix pinned worker reads and add explicit Oracle panel recovery
+- Sync the worker on every merge behind a gate, and never release without notes
+- Test the released worker against each change, and watch production for what CI cannot see
 
-Source commit `ff3932db9017`.
+Source commit `47df9c68fe0d`.

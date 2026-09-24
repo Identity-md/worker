@@ -44,8 +44,11 @@ try {
   } else {
     // What changed comes from RELEASE_NOTES.md, written by the sync beside build.json; the page
     // then says how to install and what the archive hashes to.
+    // Refused rather than published bare: a release that does not say what changed gives nobody
+    // running a worker a reason to trust the update it is about to install on their machine.
     let changed = '';
     try { changed = (await readFile('RELEASE_NOTES.md', 'utf8')).replace(/^# .*\n+/, '').trim(); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+    if (!changed) throw new Error('RELEASE_NOTES.md is missing or empty: every release says what changed');
     const notes = join(temporary, 'notes.md');
     await writeFile(notes, `${changed ? `${changed}\n\n` : ''}## Install\n\nInstall the attached identitymd-worker.tgz with npm install -g, or run \`imd update\` on a machine that already has the worker. Releases are public downloads; the README covers download, checksum verification and installation.\n\nSHA-256: \`${hash}\`\n`);
     if (!existing) run('gh', ['release', 'create', tag, '--repo', repository, '--verify-tag', '--draft', '--title', `Worker ${build.daemonVersion}`, '--notes-file', notes]);
