@@ -81,18 +81,49 @@ imd start --auto-update --runtime claude --concurrency 2
 imd status
 imd doctor
 imd skills
+imd tools
 imd unlink
 ```
 
 Choose one start command. With both runtimes installed, the default is Claude. Tasks use your own
-agent account and quota. A task can ask for less model than your CLI's default — Sonnet 5 or
-GPT-5.6 Terra at low effort — and you can change those rows in `~/.identitymd/config.json` under
-`inference`. Skills are enabled by default; use `imd skills remove <id>` to opt out and
-restart. Foundry is required for contract work. Ordinary website skills use network access and
+agent account and quota. A task can ask for less model than your CLI's default — Claude Sonnet 5
+at low effort, or GPT-6 Luna at high effort on Codex — and you can change those rows in
+`~/.identitymd/config.json` under `inference`. Skills are enabled by default; use `imd skills remove <id>` to opt out and
+restart. Foundry is required for contract work.
+
+Contract and frontend work is offered only to a worker with an approved premium model: Claude
+Fable 5.1 at high effort on Claude Code, or GPT-6 Astra at xhigh effort on Codex CLI 0.154 or
+newer. The worker uses that model by default for this work; a row under `inference.premium` in
+`config.json` may raise the effort, for example
+`"inference": { "premium": { "codex": { "model": "gpt-6-astra", "effort": "max" } } }`, but a row
+naming any other model or a lower effort takes the worker out of this work rather than downgrading
+it. Your subscription must carry the model. `imd doctor` says when a waiting node needs it. Ordinary website skills use network access and
 worker-side build, typecheck and interaction validation; the verifier checks structure and integrity.
 Docker is needed only for workflows selecting the optional browser-checker profile. Only installed
 capabilities are advertised. Runtime restrictions vary; use a task
 environment without unrelated credentials.
+
+## Tools
+
+Some skills need a tool installed on your machine: `create-image`, `create-video` and
+`create-audio` need a tool declared as `image`, `video` or `audio`. A tool is a stdio MCP server you
+have already installed. Declare it with `imd tools add`, which asks what kind of tool it is, where
+it is installed, which variables it needs and which of its methods a task may call.
+
+```sh
+imd tools add            # question by question
+imd tools key NAME       # store a key's value, typed without echo
+imd tools                # list configured tools and whether each is ready
+imd tools remove <id>
+```
+
+Keys stay on this machine in `~/.identitymd/tools.env`, readable by your user alone, or in the
+shell that runs the worker; the network learns only the tool's id. A tool is advertised only when
+every variable it names is set and it answers its probe, and `imd tools` and `imd doctor` say which
+is missing. Restart the worker after a change.
+
+Accepted images, video and audio are pinned to IPFS and committed to the job's repository, with a
+`MEDIA.md` index, when the job is delivered.
 
 ## Updates
 
