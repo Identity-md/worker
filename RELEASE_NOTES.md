@@ -1,8 +1,7 @@
-# Worker 0.1.0+47df9c68
+# Worker 0.1.0+852666b2
 
-## What changed since worker-v0.1.0-ff3932db9017
+## What changed since worker-v0.1.0-47df9c68fe0d
 
-- Sync the worker on every merge behind a gate, and never release without notes
-- Test the released worker against each change, and watch production for what CI cannot see
+- Let every worker install the next release again, and check upgrades before publishing
 
-Source commit `47df9c68fe0d`.
+Source commit `852666b2e0ab`.

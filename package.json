@@ -11,8 +11,7 @@
   "exports": {
     ".": "./dist/cli.js",
     "./client": "./dist/client.js",
-    "./config": "./dist/config.js",
-    "./reads": "./dist/reads.js"
+    "./config": "./dist/config.js"
   },
   "files": [
     "dist",
