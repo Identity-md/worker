@@ -1,11 +1,11 @@
-# Worker 0.1.0+5cdc3b11
+# Worker 0.1.0+47417580
 
-## What changed since worker-v0.1.0-5bfa82612889
+## What changed since worker-v0.1.0-5cdc3b11cdd6
 
-- CI: run the packages' test suites unsorted
-- Website work: frontier models required, browser preferred, never required
-- Skills may prefer tools; websites use a browser where there is one
-- Skills: references may require tools; add better-interface
-- Worker checks build without via_ir first; doctor asks for 4 GB, not 8
+- Worker prompt: an existing project's configuration is named as protected, as the guard treats it
+- Contract builds: the pinned compiler is on the worker, and projects pin one the verifier carries
+- Output-only submissions carry no bundle; small pinned reads ride in the task frame
+- Verifier: claim and report in batches; heartbeats every forty-five seconds
+- Oracle lifecycle: ten-minute light claims, credential pauses, a wording screen, credit for split panels, a fact-first brief
 
-Source commit `5cdc3b11cdd6`.
+Source commit `47417580e7c6`.
