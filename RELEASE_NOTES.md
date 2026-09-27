@@ -1,11 +1,8 @@
-# Worker 0.1.0+47417580
+# Worker 0.1.0+1cab6e84
 
-## What changed since worker-v0.1.0-5cdc3b11cdd6
+## What changed since worker-v0.1.0-47417580e7c6
 
-- Worker prompt: an existing project's configuration is named as protected, as the guard treats it
-- Contract builds: the pinned compiler is on the worker, and projects pin one the verifier carries
-- Output-only submissions carry no bundle; small pinned reads ride in the task frame
-- Verifier: claim and report in batches; heartbeats every forty-five seconds
-- Oracle lifecycle: ten-minute light claims, credential pauses, a wording screen, credit for split panels, a fact-first brief
+- Publication: a site's deployment config may carry walletAddChain and harmless extras, and the worker checks it first
+- Verifier: run Foundry 1.8.3, the release workers already use, and have doctor say when they differ
 
-Source commit `47417580e7c6`.
+Source commit `1cab6e840c88`.
