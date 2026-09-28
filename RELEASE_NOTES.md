@@ -1,7 +1,7 @@
-# Worker 0.1.0+6d07d12b
+# Worker 0.1.0+d91998ca
 
-## What changed since worker-v0.1.0-1cab6e840c88
+## What changed since worker-v0.1.0-6d07d12bb492
 
-- Sites: Uniswap's PoolSwapTest is vetted on Sepolia, and its documentation may be cited
+- Launch a requester's own token above the swarm's ten percent
 
-Source commit `6d07d12bb492`.
+Source commit `d91998caed66`.
