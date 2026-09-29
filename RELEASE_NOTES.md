@@ -1,7 +1,8 @@
-# Worker 0.1.0+4ec1a4b6
+# Worker 0.1.0+b316614d
 
-## What changed since worker-v0.1.0-042c10fcddea
+## What changed since worker-v0.1.0-4ec1a4b63f24
 
-- Publisher: a site is pinned only from its committed export; its own build never runs here
+- feat: add resumable paid client and x402 discovery compatibility
+- Publisher: deliver continuations into the project repository, open PRs before main moves
 
-Source commit `4ec1a4b63f24`.
+Source commit `b316614ddd14`.
