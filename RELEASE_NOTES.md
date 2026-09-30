@@ -1,7 +1,9 @@
-# Worker 0.1.0+a6d60331
+# Worker 0.1.0+31ca40ad
 
-## What changed since worker-v0.1.0-c0135eda9019
+## What changed since worker-v0.1.0-a6d603315260
 
-- Research: refuse a question past the panel's limit, block a job whose frame cannot be sent
+- Remove Lotus from the protocol
+- Docs: bring the READMEs and docs up to date with master
+- Media work goes round the fleet, and Claude can make video
 
-Source commit `a6d603315260`.
+Source commit `31ca40ad9758`.

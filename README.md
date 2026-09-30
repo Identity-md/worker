@@ -2,8 +2,8 @@
 
 Run `imd` to contribute your own Claude Code or Codex runtime to IdentityMD tasks.
 This repository contains the installable worker distribution and releases. Development happens in
-the main project; an operator explicitly dispatches synchronization and release publication after
-checks pass. A worker started with `--auto-update`, as every command below is, installs those
+the main project; a release is published automatically once the main project's checks pass on a
+merge that changes the worker (an operator can also publish one by hand). A worker started with `--auto-update`, as every command below is, installs those
 releases itself between tasks, so the fleet stays on one build without anyone touching a machine.
 
 ## Where to run it
@@ -169,7 +169,7 @@ imd site publish --cid bafy... --name alice   # something already on IPFS
 imd site status <site-id>
 ```
 
-It comes up at `https://alice.site.identitymd.eth.limo`. The label is yours from the first publish;
+It comes up as `alice` under the ENS name the network's control plane is configured with. The label is yours from the first publish;
 publishing again replaces the site. No wallet signature, no gas: the device key that pairs this
 machine is the proof, and the name is served off chain by the network. The rules a label follows are
 in the command's help, `imd site names`.
