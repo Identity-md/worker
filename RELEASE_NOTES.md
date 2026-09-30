@@ -1,9 +1,7 @@
-# Worker 0.1.0+c0135eda
+# Worker 0.1.0+a6d60331
 
-## What changed since worker-v0.1.0-b316614ddd14
+## What changed since worker-v0.1.0-c0135eda9019
 
-- explorer: connect wallets through RainbowKit, with a picker and switching
-- feat: add standard x402 endpoints for jobs and oracle requests
-- Skills: a hello or heartbeat carries up to 256 skill ids, not 64
+- Research: refuse a question past the panel's limit, block a job whose frame cannot be sent
 
-Source commit `c0135eda9019`.
+Source commit `a6d603315260`.
