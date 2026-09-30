@@ -1,9 +1,8 @@
-# Worker 0.1.0+31ca40ad
+# Worker 0.1.0+c7d6db7d
 
-## What changed since worker-v0.1.0-a6d603315260
+## What changed since worker-v0.1.0-31ca40ad9758
 
-- Remove Lotus from the protocol
-- Docs: bring the READMEs and docs up to date with master
-- Media work goes round the fleet, and Claude can make video
+- Launches: pair the pool with ETH or the chain's IMD
+- Launches: a chain per request
 
-Source commit `31ca40ad9758`.
+Source commit `c7d6db7df710`.
