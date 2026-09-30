@@ -1,7 +1,8 @@
-# Worker 0.1.0+a55ceb74
+# Worker 0.1.0+1c90f22d
 
-## What changed since worker-v0.1.0-c7d6db7df710
+## What changed since worker-v0.1.0-a55ceb746c68
 
-- Oracle: sign the panel size, quorum and agreeing count (attestation v2)
+- fix(ci): patch ws and scope secret-scan exceptions
+- fix(launch): protect pool initialization and aggregate wallet rewards
 
-Source commit `a55ceb746c68`.
+Source commit `1c90f22dccb2`.
