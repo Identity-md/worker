@@ -1,7 +1,8 @@
-# Worker 0.1.0+da6bdbe5
+# Worker 0.1.0+4698ca99
 
-## What changed since worker-v0.1.0-9f8ef295d8ca
+## What changed since worker-v0.1.0-da6bdbe5d4e5
 
-- Hook launches name the pool manager as $poolManager
+- Skills and docs: describe the equal_connected split
+- Launch rewards: 2% equal per wallet that worked on the launch, 8% per connected seat
 
-Source commit `da6bdbe5d4e5`.
+Source commit `4698ca990afc`.
