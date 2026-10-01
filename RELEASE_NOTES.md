@@ -1,8 +1,7 @@
-# Worker 0.1.0+9f8ef295
+# Worker 0.1.0+da6bdbe5
 
-## What changed since worker-v0.1.0-1c90f22dccb2
+## What changed since worker-v0.1.0-9f8ef295d8ca
 
-- plane, deployer: the requester's 90% on project and hook launches
-- launch fees phase 2: the payer as requester, the pool's real fee end to end
+- Hook launches name the pool manager as $poolManager
 
-Source commit `9f8ef295d8ca`.
+Source commit `da6bdbe5d4e5`.
