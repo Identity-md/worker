@@ -1,7 +1,7 @@
-# Worker 0.1.0+8df7996c
+# Worker 0.1.0+6d86b7ef
 
-## What changed since worker-v0.1.0-3906ad8b9491
+## What changed since worker-v0.1.0-8df7996c57ed
 
-- Opus 5.5 and GPT-6.1 Sol qualify for premium contract work from medium effort
+- Workers find forge where foundryup put it and advertise it without a restart
 
-Source commit `8df7996c57ed`.
+Source commit `6d86b7ef91a5`.
