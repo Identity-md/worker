@@ -1,7 +1,7 @@
-# Worker 0.1.0+b4c7ae3a
+# Worker 0.1.0+986b9f58
 
-## What changed since worker-v0.1.0-e3e7b59489b6
+## What changed since worker-v0.1.0-b4c7ae3a4a55
 
-- Bump croner from 9.1.0 to 10.0.1
+- Custom tokens can pair with the chain's pair token on Ethereum, Robinhood Chain and Base
 
-Source commit `b4c7ae3a4a55`.
+Source commit `986b9f582b07`.
