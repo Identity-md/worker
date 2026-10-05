@@ -1,7 +1,7 @@
-# Worker 0.1.0+e3e7b594
+# Worker 0.1.0+b4c7ae3a
 
-## What changed since worker-v0.1.0-bb1c0c94e714
+## What changed since worker-v0.1.0-e3e7b59489b6
 
-- Bump the npm-minor-and-patch group with 8 updates
+- Bump croner from 9.1.0 to 10.0.1
 
-Source commit `e3e7b59489b6`.
+Source commit `b4c7ae3a4a55`.
