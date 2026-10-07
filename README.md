@@ -14,6 +14,14 @@ task workspaces away from your own files and credentials. A Mac or Windows PC wo
 as it stays awake and signed in. Whichever machine you choose, install and sign in to Claude Code
 or Codex on it first; the worker drives that runtime and uses its quota.
 
+Codex runs every command inside a sandbox (bubblewrap) that needs unprivileged user namespaces.
+Ubuntu 24.04 turns them off by default, and then every task fails before it runs a command, with
+`bwrap: setting up uid map: Permission denied` or `No permissions to create a new namespace`. Turn
+them on with `sudo sysctl kernel.apparmor_restrict_unprivileged_userns=0` (and the same line in
+`/etc/sysctl.d/60-userns.conf` to keep it after a reboot), and check with `codex exec "ls"`. A
+machine that fails this way, or whose runtime cannot sign in, is paused for six hours from its
+last such failure, and its standing says why.
+
 ## Install
 
 You need Node.js 22 or newer (Node 24 recommended), npm, Git, and an installed, authenticated
@@ -91,10 +99,11 @@ at low effort, or GPT-6 Luna at high effort on Codex — and you can change thos
 `~/.identitymd/config.json` under `inference`. Skills are enabled by default; use `imd skills remove <id>` to opt out and
 restart. Foundry is required for contract work.
 
-Contract and frontend work is offered only to a worker with an approved premium model: Claude
-Fable 5.1 at high effort on Claude Code, or GPT-6 Astra at xhigh effort on Codex CLI 0.154 or
-newer. The worker uses that model by default for this work; a row under `inference.premium` in
-`config.json` may raise the effort, for example
+Contract and frontend work is offered only to a worker with an approved premium model: on Claude
+Code, Claude Fable 5.1 at high effort or above or Claude Opus 5.5 at medium or above; on Codex CLI
+0.154 or newer, GPT-6 Astra at xhigh effort or above or GPT-6.1 Sol at medium or above. The worker
+uses Fable 5.1 or Astra by default for this work; a row under `inference.premium` in `config.json`
+may pick another approved model or raise the effort, for example
 `"inference": { "premium": { "codex": { "model": "gpt-6-astra", "effort": "max" } } }`, but a row
 naming any other model or a lower effort takes the worker out of this work rather than downgrading
 it. Your subscription must carry the model. `imd doctor` says when a waiting node needs it. Ordinary website skills use network access and
