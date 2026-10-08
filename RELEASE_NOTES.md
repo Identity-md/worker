@@ -1,8 +1,7 @@
-# Worker 0.1.0+ef8fb83e
+# Worker 0.1.0+ad90ce4c
 
-## What changed since worker-v0.1.0-a2d9a899ba65
+## What changed since worker-v0.1.0-ef8fb83eb019
 
-- A machine whose sandbox cannot start is paused for hours and gives the attempt back
-- READMEs match the code again, with the on-chain intake live on Ethereum and Robinhood Chain
+- Launch guards and an oracle-consumer skill, from job 203c263c
 
-Source commit `ef8fb83eb019`.
+Source commit `ad90ce4cb54f`.
