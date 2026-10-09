@@ -18,9 +18,12 @@ Codex runs every command inside a sandbox (bubblewrap) that needs unprivileged u
 Ubuntu 24.04 turns them off by default, and then every task fails before it runs a command, with
 `bwrap: setting up uid map: Permission denied` or `No permissions to create a new namespace`. Turn
 them on with `sudo sysctl kernel.apparmor_restrict_unprivileged_userns=0` (and the same line in
-`/etc/sysctl.d/60-userns.conf` to keep it after a reboot), and check with `codex exec "ls"`. A
-machine that fails this way, or whose runtime cannot sign in, is paused for six hours from its
-last such failure, and its standing says why.
+`/etc/sysctl.d/60-userns.conf` to keep it after a reboot), and check with `codex exec "ls"`. The
+worker checks this itself: before it takes work, right after a task fails this way, and once a day
+while idle, it has the runtime run one shell command on the model it offers, takes no work while
+that fails, and says why in its log. Once the cause is fixed it starts again at its next check, or
+at once if you restart it. A machine that fails a task this way, or whose runtime cannot sign in,
+is paused for six hours from its last such failure, and its standing says why.
 
 ## Install
 
