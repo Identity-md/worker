@@ -1,8 +1,8 @@
-# Worker 0.1.0+21c4e407
+# Worker 0.1.0+14166f2e
 
-## What changed since worker-v0.1.0-53e0802f7e8f
+## What changed since worker-v0.1.0-21c4e407a56a
 
-- Execution: launch.json is refused when a hook it deploys cannot land on an address carrying its permissions
-- Execution: a manifest contract over the protocol's size limits is refused with its sizes, on the worker and at attestation
+- Deployer: verifies each launched contract on Etherscan from its release's sources
+- Verifier: a release's sources go to the plane after its attestation, for verifying its contracts on Etherscan
 
-Source commit `21c4e407a56a`.
+Source commit `14166f2e0997`.
