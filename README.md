@@ -93,6 +93,7 @@ imd status
 imd doctor
 imd skills
 imd tools
+imd rpc
 imd unlink
 ```
 
@@ -133,6 +134,27 @@ Keys stay on this machine in `~/.identitymd/tools.env`, readable by your user al
 shell that runs the worker; the network learns only the tool's id. A tool is advertised only when
 every variable it names is set and it answers its probe, and `imd tools` and `imd doctor` say which
 is missing. Restart the worker after a change.
+
+## Your own RPC
+
+Oracle panels scan chains, and a panel of two hundred machines scanning through the same public
+endpoints gets rate-limited: a scan that comes back short disagrees with the rest and the seat is
+lost. If you pay for an endpoint (Alchemy, Infura, QuickNode, your own node), give it to the worker:
+
+```sh
+imd rpc add 1            # asks for the URL without echo and checks it serves chain 1
+imd rpc add 8453
+imd rpc                  # list them, host only
+imd rpc remove 8453
+```
+
+The URL stays in `~/.identitymd/config.json`, readable by your user alone. Tasks never see it: the
+worker serves each chain on `http://127.0.0.1:<port>/rpc/<chain>` while it runs and forwards to your
+URL, so the address a task writes in its public notes means nothing anywhere else. If your endpoint
+fails (rate-limited, out of capacity, a refused key, a provider error or no answer), the same request
+goes to the public endpoints the task was given, and yours is tried again 30 seconds later. The
+network learns only which chains you have, and seats those chains' panels on your machine first.
+`imd doctor` checks each one. Restart the worker after a change.
 
 Accepted images, video and audio are pinned to IPFS and committed to the job's repository, with a
 `MEDIA.md` index, when the job is delivered.

@@ -1,8 +1,7 @@
-# Worker 0.1.0+14166f2e
+# Worker 0.1.0+c4d32abc
 
-## What changed since worker-v0.1.0-21c4e407a56a
+## What changed since worker-v0.1.0-14166f2e0997
 
-- Deployer: verifies each launched contract on Etherscan from its release's sources
-- Verifier: a release's sources go to the plane after its attestation, for verifying its contracts on Etherscan
+- Workers use their contributor's own RPC, and chain panels are seated on them first
 
-Source commit `14166f2e0997`.
+Source commit `c4d32abc1f14`.
