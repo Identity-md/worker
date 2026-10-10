@@ -1,7 +1,7 @@
-# Worker 0.1.0+c4d32abc
+# Worker 0.1.0+4ba55555
 
-## What changed since worker-v0.1.0-14166f2e0997
+## What changed since worker-v0.1.0-c4d32abc1f14
 
-- Workers use their contributor's own RPC, and chain panels are seated on them first
+- Intake v2: a failure function for refused and failed requests, served beside v1
 
-Source commit `c4d32abc1f14`.
+Source commit `4ba555550437`.
