@@ -1,7 +1,7 @@
-# Worker 0.1.0+47056004
+# Worker 0.1.0+fb8278c5
 
-## What changed since worker-v0.1.0-40b9e587f6d6
+## What changed since worker-v0.1.0-47056004b02c
 
-- Worker: a finished task's checkout is removed, and old ones are swept at start
+- Scripts: parked launches grouped by why, and closing the ones that will not launch
 
-Source commit `47056004b02c`.
+Source commit `fb8278c5275f`.
