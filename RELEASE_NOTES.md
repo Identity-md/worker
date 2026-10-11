@@ -1,7 +1,7 @@
-# Worker 0.1.0+46c92320
+# Worker 0.1.0+40b9e587
 
-## What changed since worker-v0.1.0-3f1208aa56bb
+## What changed since worker-v0.1.0-46c923201eee
 
-- Oracle consumers: a receiver takes only questions its owner pinned, and the guide says what a callback proves
+- Website steps never publish: the plane hosts a job's site
 
-Source commit `46c923201eee`.
+Source commit `40b9e587f6d6`.
