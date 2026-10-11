@@ -1,7 +1,7 @@
-# Worker 0.1.0+40b9e587
+# Worker 0.1.0+47056004
 
-## What changed since worker-v0.1.0-46c923201eee
+## What changed since worker-v0.1.0-40b9e587f6d6
 
-- Website steps never publish: the plane hosts a job's site
+- Worker: a finished task's checkout is removed, and old ones are swept at start
 
-Source commit `40b9e587f6d6`.
+Source commit `47056004b02c`.
