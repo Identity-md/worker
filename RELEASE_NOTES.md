@@ -1,9 +1,13 @@
-# Worker 0.1.0+aca0ff06
+# Worker 0.1.0+20b2eed8
 
-## What changed since worker-v0.1.0-788bb33f939f
+## What changed since worker-v0.1.0-aca0ff06b928
 
-- Launch manifests: the burn address only where a name says it burns, never a fee or treasury sink
-- A launch takes the burn address for a burn sink and the zero address for a v4 Currency
-- A media tool out of credit is its machine's problem: the step goes to another machine
+- Only a website revision is told a finding it cannot settle is not a reason to stop
+- Not delivered: a Hardhat project's own build output under artifacts/ is left out
+- A task frame's coverage ratio of 0 or 1 still parses, so a rolled-back plane keeps its daemons
+- Work written under artifacts/ that is not a named output is said to be undelivered
+- The design review grades only what the build can change
+- A step is handed the files the steps before it wrote
+- Audit judges reach a machine: no fraction in a task, and a send that fails is the plane's
 
-Source commit `aca0ff06b928`.
+Source commit `20b2eed83728`.
