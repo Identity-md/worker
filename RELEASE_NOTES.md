@@ -1,9 +1,9 @@
-# Worker 0.1.0+788bb33f
+# Worker 0.1.0+aca0ff06
 
-## What changed since worker-v0.1.0-fb8278c5275f
+## What changed since worker-v0.1.0-788bb33f939f
 
-- Manifest step: a launch.json already right is submitted unchanged and checked, not failed
-- Launch manifests: a struct argument is written one entry per field, signed integers pass
-- Self-test: a command blocked by policy is a sandbox fault, with the Windows fix
+- Launch manifests: the burn address only where a name says it burns, never a fee or treasury sink
+- A launch takes the burn address for a burn sink and the zero address for a v4 Currency
+- A media tool out of credit is its machine's problem: the step goes to another machine
 
-Source commit `788bb33f939f`.
+Source commit `aca0ff06b928`.
