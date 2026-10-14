@@ -1,7 +1,7 @@
-# Worker 0.1.2+c0fbf294
+# Worker 0.1.2+9746468e
 
-## What changed since worker-v0.1.2-3648896bf071
+## What changed since worker-v0.1.2-c0fbf2943619
 
-- A refused Codex jail says what it ran and what it re-opened, for machines nobody here can reach
+- The jail finds a Codex behind a wrapper, a Homebrew node's libraries, and the worker's own node
 
-Source commit `c0fbf2943619`.
+Source commit `9746468efd84`.
