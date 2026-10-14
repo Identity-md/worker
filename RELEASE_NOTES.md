@@ -1,7 +1,7 @@
-# Worker 0.1.2+9746468e
+# Worker 0.1.2+fa23b3ea
 
-## What changed since worker-v0.1.2-c0fbf2943619
+## What changed since worker-v0.1.2-9746468efd84
 
-- The jail finds a Codex behind a wrapper, a Homebrew node's libraries, and the worker's own node
+- The jail re-opens Homebrew's OpenSSL configuration, and nothing else under its etc
 
-Source commit `9746468efd84`.
+Source commit `fa23b3eaf1ba`.
