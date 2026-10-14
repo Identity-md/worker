@@ -1,9 +1,7 @@
-# Worker 0.1.2+3648896b
+# Worker 0.1.2+c0fbf294
 
-## What changed since worker-v0.1.2-aca6c68825ef
+## What changed since worker-v0.1.2-3648896bf071
 
-- Root Claude workers install bubblewrap and socat where missing, and imd jail-setup does it under sudo
-- Runtime updates manage a CLI named by IDENTITYMD_*_BIN when it is a real install, and use the worker's npm
-- The jail re-opens the whole npm tree a runtime lives in, and the runtime IDENTITYMD_*_BIN names
+- A refused Codex jail says what it ran and what it re-opened, for machines nobody here can reach
 
-Source commit `3648896bf071`.
+Source commit `c0fbf2943619`.
