@@ -1,9 +1,12 @@
-# Worker 0.1.2+b326004f
+# Worker 0.1.2+78d471e4
 
-## What changed since worker-v0.1.2-fa23b3eaf1ba
+## What changed since worker-v0.1.2-b326004f0a52
 
-- Add an egress filter: a tiny CONNECT proxy that refuses private, reserved or local addresses by resolved IP
-- Key the read jail to the skill id the plane keeps, not a read name it strips
-- Deny the sandbox the known cloud-metadata hosts, so a WebFetch or curl we did not catch at the door still cannot reach them
+- Wire the egress filter into the worker behind IDENTITYMD_EGRESS_FILTER=1, with loopback bypass
+- Open the macOS svm path in jailReadRoots, add a Codex smoke, and tie the per-runtime jail test to build-contract-project
+- Phase B.2: jail build-contract-project tasks on both Claude and Codex workers
+- Add SSH private keys to the host-exposure probe list
+- Phase B.1: jail research-report tasks on both Claude and Codex workers
+- A worker flags when a task could take over its host or read local secrets, and can be told to refuse
 
-Source commit `b326004f0a52`.
+Source commit `78d471e48ecb`.
