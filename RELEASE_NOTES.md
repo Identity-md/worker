@@ -1,8 +1,8 @@
-# Worker 0.1.2+024c41dd
+# Worker 0.1.2+c0fadb97
 
-## What changed since worker-v0.1.2-78d471e48ecb
+## What changed since worker-v0.1.2-024c41dd1e7b
 
-- imd doctor adds a sandbox check per installed runtime
-- Rename imd jail-setup to imd sandbox, and surface the fix at pair and update time
+- Worker: a git command stopped at its timeout says so
+- Worker: a local build stopped at its time limit goes to the verifier, not to repair
 
-Source commit `024c41dd1e7b`.
+Source commit `c0fadb97de30`.
