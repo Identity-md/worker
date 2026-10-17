@@ -1,7 +1,7 @@
-# Worker 0.1.2+45fc1aec
+# Worker 0.1.2+c3fba9eb
 
-## What changed since worker-v0.1.2-cb5346c3f920
+## What changed since worker-v0.1.2-45fc1aec72e3
 
-- A step in flight shows the model its worker's runtime reported, not the machine's own
+- Skills: intake-client tells builders how a contract opens work through the Intake
 
-Source commit `45fc1aec72e3`.
+Source commit `c3fba9eb12cc`.
