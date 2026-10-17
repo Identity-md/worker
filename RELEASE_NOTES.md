@@ -1,7 +1,7 @@
-# Worker 0.1.2+c3fba9eb
+# Worker 0.1.2+7aaac31b
 
-## What changed since worker-v0.1.2-45fc1aec72e3
+## What changed since worker-v0.1.2-c3fba9eb12cc
 
-- Skills: intake-client tells builders how a contract opens work through the Intake
+- Doctor drops its two-model list, and GPT-6 Astra reads high wherever it is written
 
-Source commit `c3fba9eb12cc`.
+Source commit `7aaac31b2220`.
