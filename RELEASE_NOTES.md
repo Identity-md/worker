@@ -1,8 +1,7 @@
-# Worker 0.1.2+6a374fcd
+# Worker 0.1.2+cf06456a
 
-## What changed since worker-v0.1.2-5921f9e9573c
+## What changed since worker-v0.1.2-6a374fcde84c
 
-- Bump the npm-minor-and-patch group with 8 updates
-- Bump the actions group with 3 updates
+- Daemon: a catalog it could not read is asked for again after a pause, not on every heartbeat
 
-Source commit `6a374fcde84c`.
+Source commit `cf06456af7a6`.
