@@ -1,7 +1,8 @@
-# Worker 0.1.2+245cce90
+# Worker 0.1.2+a9b5b731
 
-## What changed since worker-v0.1.2-cf06456af7a6
+## What changed since worker-v0.1.2-245cce90738c
 
-- Protocol: a hook launch's manifest may name its own token's arguments and supply
+- pnpm audit passes again: follow-redirects takes its patched version
+- Worker: a research question runs in a directory of its own, not the work root
 
-Source commit `245cce90738c`.
+Source commit `a9b5b7319c35`.
