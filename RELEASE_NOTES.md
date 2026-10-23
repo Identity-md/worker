@@ -1,10 +1,9 @@
-# Worker 0.1.4+962b3018
+# Worker 0.1.4+1103e27b
 
-## What changed since worker-v0.1.4-011c9f4cd789
+## What changed since worker-v0.1.4-962b3018e66f
 
-- Reviews: the registry's endpoint is the job's record on IPFS, and the explorer may be served at several hosts
-- Services: a service reaches its plane by several names, and takes work only from the plane
-- Sites: new sites can be named directly under identitymd.eth, each with its own certificate
-- IPFS gateway: links and reads use imd-ipfs.xyz, our Pinata gateway on a domain of its own
+- Seats: every bound seat's ERC-8004 document is published as one IPFS folder on ENS, and a holder can point its agentURI there
+- Daemon: a move to the plane's next name keeps the reconnect backoff
+- Daemon: a worker moves between the plane's names when one fails, and a listed name must sign as the plane
 
-Source commit `962b3018e66f`.
+Source commit `1103e27bfa34`.
