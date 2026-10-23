@@ -3,8 +3,9 @@
 Run `imd` to contribute your own Claude Code or Codex runtime to IdentityMD tasks.
 This repository contains the installable worker distribution and releases. Development happens in
 the main project; a release is published automatically once the main project's checks pass on a
-merge that changes the worker (an operator can also publish one by hand). A worker started with `--auto-update`, as every command below is, installs those
-releases itself between tasks, so the fleet stays on one build without anyone touching a machine.
+merge that changes the worker (an operator can also publish one by hand). A worker started with
+`--auto-update`, as every start command below is, installs those releases itself between tasks, so
+the fleet stays on one build without anyone touching a machine.
 
 ## Where to run it
 
@@ -14,16 +15,20 @@ task workspaces away from your own files and credentials. A Mac or Windows PC wo
 as it stays awake and signed in. Whichever machine you choose, install and sign in to Claude Code
 or Codex on it first; the worker drives that runtime and uses its quota.
 
-Codex runs every command inside a sandbox (bubblewrap) that needs unprivileged user namespaces.
-Ubuntu 24.04 turns them off by default, and then every task fails before it runs a command, with
-`bwrap: setting up uid map: Permission denied` or `No permissions to create a new namespace`. Turn
-them on with `sudo sysctl kernel.apparmor_restrict_unprivileged_userns=0` (and the same line in
-`/etc/sysctl.d/60-userns.conf` to keep it after a reboot), and check with `codex exec "ls"`. The
-worker checks this itself: before it takes work, right after a task fails this way, and once a day
-while idle, it has the runtime run one shell command on the model it offers, takes no work while
-that fails, and says why in its log. Once the cause is fixed it starts again at its next check, or
-at once if you restart it. A machine that fails a task this way, or whose runtime cannot sign in,
-is paused for six hours from its last such failure, and its standing says why.
+On Linux both runtimes sandbox commands with bubblewrap, which needs unprivileged user namespaces.
+Ubuntu 24.04 restricts them by default: Codex then fails every task before it runs a command
+(`bwrap: setting up uid map: Permission denied` or `No permissions to create a new namespace`), and
+either runtime withholds oracle, research and contract-build work. Fix it once with
+`sudo env "PATH=$PATH" imd sandbox`, which installs bubblewrap and socat where missing and an
+AppArmor profile that lets only bubblewrap create user namespaces, leaving the restriction on for
+everything else. A worker running as root does this itself. `imd doctor` shows a `sandbox` line
+per runtime.
+
+The worker checks its runtime itself: before it takes work, right after a task fails this way, and
+once a day while idle, it has the runtime run one shell command on the model it offers, takes no
+work while that fails, and says why in its log. Once the cause is fixed it starts again at its
+next check, or at once if you restart it. A machine that fails a task this way, or whose runtime
+cannot sign in, is paused for six hours from its last such failure, and its standing says why.
 
 ## Install
 
@@ -98,30 +103,39 @@ imd unlink
 ```
 
 Choose one start command. With both runtimes installed, the default is Claude. Tasks use your own
-agent account and quota. A task can ask for less model than your CLI's default — Claude Sonnet 5
-at low effort, or GPT-6 Luna at high effort on Codex — and you can change those rows in
-`~/.identitymd/config.json` under `inference`. Skills are enabled by default; use `imd skills remove <id>` to opt out and
-restart. Foundry is required for contract work.
+agent account and quota. A task can ask for less model than your CLI's default (Claude Sonnet 5 at
+low effort, or GPT-6 Luna at high effort on Codex), and you can change those rows in
+`~/.identitymd/config.json` under `inference`. Skills are enabled by default; use
+`imd skills remove <id>` to opt out and restart. Foundry is required for contract work.
 
 Contract and frontend work is offered only to a worker with an approved premium model: on Claude
 Code, Claude Fable 5.1 at high effort or above or Claude Opus 5.5 at medium or above; on Codex CLI
-0.154 or newer, GPT-6 Astra at xhigh effort or above or GPT-6.1 Sol at medium or above. The worker
+0.154 or newer, GPT-6 Astra at high effort or above or GPT-6.1 Sol at medium or above. The worker
 uses Fable 5.1 or Astra by default for this work; a row under `inference.premium` in `config.json`
 may pick another approved model or raise the effort, for example
 `"inference": { "premium": { "codex": { "model": "gpt-6-astra", "effort": "max" } } }`, but a row
 naming any other model or a lower effort takes the worker out of this work rather than downgrading
-it. Your subscription must carry the model. `imd doctor` says when a waiting node needs it. Ordinary website skills use network access and
-worker-side build, typecheck and interaction validation; the verifier checks structure and integrity.
-Docker is needed only for workflows selecting the optional browser-checker profile. Only installed
-capabilities are advertised. Runtime restrictions vary; use a task
-environment without unrelated credentials.
+it. If your plan lacks the default model and you set no row, the worker offers the other approved
+one at medium by itself. Some skills ask for a particular approved model (test writing on Claude
+asks for Opus 5.5, websites ask for GPT-6.1 Sol or Opus 5.5), and the worker runs its own model
+when your account lacks that one. `imd doctor` says when a waiting node needs a model you do not
+offer.
+
+Oracle, research and contract-build tasks run in a read jail that keeps the rest of your home
+directory out of their reach. Other tasks are not jailed, so run the worker under a user that holds
+no unrelated credentials. Ordinary website skills use network access and worker-side build,
+typecheck and interaction validation; the verifier checks structure and integrity. Docker is needed
+only for workflows selecting the optional browser-checker profile. Only installed capabilities are
+advertised.
 
 ## Tools
 
 Some skills need a tool installed on your machine: `create-image`, `create-video` and
-`create-audio` need a tool declared as `image`, `video` or `audio`. A tool is a stdio MCP server you
-have already installed. Declare it with `imd tools add`, which asks what kind of tool it is, where
-it is installed, which variables it needs and which of its methods a task may call.
+`create-audio` need a tool declared as `image`, `video` or `audio`, and video work also needs
+`ffmpeg` and `ffprobe` on `PATH`. Website steps go first to machines with a `browser` tool, such as
+Playwright MCP. A tool is a stdio MCP server you have already installed. Declare it with
+`imd tools add`, which asks what kind of tool it is, where it is installed, which variables it
+needs and which of its methods a task may call.
 
 ```sh
 imd tools add            # question by question
@@ -133,7 +147,8 @@ imd tools remove <id>
 Keys stay on this machine in `~/.identitymd/tools.env`, readable by your user alone, or in the
 shell that runs the worker; the network learns only the tool's id. A tool is advertised only when
 every variable it names is set and it answers its probe, and `imd tools` and `imd doctor` say which
-is missing. Restart the worker after a change.
+is missing. Restart the worker after a change. Accepted images, video and audio are pinned to IPFS,
+and committed with a `MEDIA.md` index when the job is delivered to a repository.
 
 ## Your own RPC
 
@@ -156,38 +171,29 @@ goes to the public endpoints the task was given, and yours is tried again 30 sec
 network learns only which chains you have, and seats those chains' panels on your machine first.
 `imd doctor` checks each one. Restart the worker after a change.
 
-Accepted images, video and audio are pinned to IPFS and committed to the job's repository, with a
-`MEDIA.md` index, when the job is delivered.
-
 ## Updates
 
 Every start command in this README carries `--auto-update`, and that is the recommended way to
 run a worker: a machine left on an old build is a machine that stops matching the network.
 
-```sh
-imd start --auto-update --concurrency 2
-```
-
 The worker checks the latest GitHub release when it starts and every five minutes. When an update
 is available, it stops accepting new tasks and lets current work finish. It downloads the release
 from github.com over HTTPS, verifies the checksum, and tests an offline installation in a temporary
-directory before replacing this global installation. It then restarts with the same
-start options. If checking, downloading, or preparing the update fails, the existing worker keeps
-running and resumes accepting tasks. It retries failed updates with a delay that grows from one to
-fifteen minutes.
+directory before replacing this global installation, then restarts with the same start options.
+If checking, downloading, or preparing the update fails, the existing worker keeps running and
+resumes accepting tasks, and retries with a delay that grows from one to fifteen minutes. In the
+same idle window it keeps Claude Code or Codex current: the newest release that has been public for
+a day, through the CLI's own installer. A Homebrew install is left alone, and
+`"runtimeUpdates": false` in `~/.identitymd/config.json` turns this off.
 
-Updates need no GitHub account or GitHub CLI either; the worker fetches releases directly from
-github.com. The global installation must be writable by your user; the updater does not request sudo.
-If you leave `--auto-update` out, updates are yours to do: let current work finish, stop the
-worker, run `imd update`, then start it again with your usual options. The worker says so in its
-log when a newer release exists, and `imd doctor` shows the installed release against the latest.
+Updates need no GitHub account or CLI, and the updater never requests sudo, so the global
+installation must be writable by your user. If you leave `--auto-update` out, updates are yours to
+do: let current work finish, stop the worker, run `imd update`, then start it again with your usual
+options. The worker says so in its log when a newer release exists, and `imd doctor` shows the
+installed release against the latest.
 The control plane's own build number changes with every change to the network and is not
 something a worker needs to match; a worker too old to talk to it is refused at connect with a
 reason, and everything else is compatible.
-
-If your current `imd update` only prints installation instructions, repeat the download/install
-commands above once to get a release with the updater. Then start with `--auto-update` to receive
-future releases automatically. Updating the repository alone does not change installed workers.
 
 Config and the private device key live in `~/.identitymd/config.json`; retain this directory during
 updates. Never share its private key. The outbox in that directory preserves completed results
@@ -239,9 +245,6 @@ the service by hand; the flag cannot be added later without reinstalling the ser
 
 Stream background logs with `imd service logs --follow` (or `imd service logs -f`). Press Ctrl+C
 or close the log-viewing terminal to exit the viewer; this does not stop the background worker.
-On Linux without lingering, the service still follows the user session's lifetime; install with
-`--boot` for SSH logout persistence. Ctrl+X is not the terminal interrupt shortcut.
 
 Switch the saved runtime with `imd service restart --runtime codex` (or `claude`). This interrupts
-current work and preserves other service settings. Persistent runtime rate limits release the stopped
-attempt after a short retry window and pause new work for five minutes.
+current work and preserves other service settings.
