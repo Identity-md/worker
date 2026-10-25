@@ -108,6 +108,14 @@ low effort, or GPT-6 Luna at high effort on Codex), and you can change those row
 `~/.identitymd/config.json` under `inference`. Skills are enabled by default; use
 `imd skills remove <id>` to opt out and restart. Foundry is required for contract work.
 
+Some skills (the goal and audit skills, and the tester) hand parts of a task to read-only helpers on
+Claude Code, each another agent loop on your account beside the task's own; `imd skills` shows how
+many. `imd start --subagents 0` turns them off and a number up to 4 lowers them, saved like
+`--concurrency`. Without it a task gets as many as its skill declares, within eight agent loops on
+the machine: three each at `--concurrency 2`. `imd status` names the runtime tasks run on and says
+none where it holds none: Codex, until a receipt can count its helpers' tokens, and Claude Code
+before 2.1.295.
+
 Contract and frontend work is offered only to a worker with an approved premium model: on Claude
 Code, Claude Fable 5.1 at high effort or above or Claude Opus 5.5 at medium or above; on Codex CLI
 0.154 or newer, GPT-6 Astra at high effort or above or GPT-6.1 Sol at medium or above. The worker
@@ -237,7 +245,7 @@ On a Linux VPS, add `--boot` to survive SSH logout and start at boot:
 imd service install --boot --auto-update --concurrency 2
 ```
 
-`--runtime codex`, `--concurrency` and `--auto-update` are saved for every future start. Use
+`--runtime codex`, `--concurrency`, `--subagents` and `--auto-update` are saved for every future start. Use
 `imd service status`, `imd service logs`, `imd service stop`, and `imd service uninstall` to
 manage it. Stop any foreground worker for the same identity first. The computer must stay awake;
 macOS and Windows require a logged-in user. Leave `--auto-update` out only if you want to update
