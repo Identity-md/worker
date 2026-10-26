@@ -191,8 +191,17 @@ directory before replacing this global installation, then restarts with the same
 If checking, downloading, or preparing the update fails, the existing worker keeps running and
 resumes accepting tasks, and retries with a delay that grows from one to fifteen minutes. In the
 same idle window it keeps Claude Code or Codex current: the newest release that has been public for
-a day, through the CLI's own installer. A Homebrew install is left alone, and
-`"runtimeUpdates": false` in `~/.identitymd/config.json` turns this off.
+a day, and that npm still lists and has not deprecated, through the CLI's own installer, once a copy
+staged beside the live one has had its tools checked while the machine worked. A release whose tools do
+not match, that refuses a setting the worker sends, or that does not start is skipped, and `imd doctor`
+says why; one whose first self-test after the switch finds the release's own fault is rolled back, and
+kept out until what its check reads changes or a newer release ages. A release that reaches the
+install some other way (another worker profile, a hand install, or the CLI's own updater, as Claude
+Code's is, which your interactive sessions run) is never rolled back: the worker works with it, its
+self-test deciding the work it takes, and `imd doctor` says whether its checks found a fault in it and
+what to do. A
+Homebrew install is left alone, and `"runtimeUpdates": false` in `~/.identitymd/config.json` turns
+this off.
 
 Updates need no GitHub account or CLI, and the updater never requests sudo, so the global
 installation must be writable by your user. If you leave `--auto-update` out, updates are yours to
