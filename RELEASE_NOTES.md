@@ -1,66 +1,8 @@
-# Worker 0.1.8+944e816a
+# Worker 0.1.8+260efc41
 
-## What changed since worker-v0.1.8-b0c2298ff364
+## What changed since worker-v0.1.8-944e816a9ed7
 
-- Tests: imd start forgets its own switch when a release put in place outside the gate replaces it before its first self-test speaks, rolls nothing back, and restarts onto that release at the gate's next turn
-- Docs: a worker's own Claude or Codex switch is undone only while the CLI prints its release, a later worker release keeps out a release moved back again, and each Claude Code update still costs a drain, a restart and a paid self-test, as DISABLE_AUTOUPDATER=1 avoids
-- Worker: imd doctor says Claude Code's own updater puts the newest release back within hours of a Claude release installed by hand, and that DISABLE_AUTOUPDATER=1 keeps it
-- Worker: imd doctor's command to put a Claude or Codex release in place by hand quotes each path that needs it for the shell of its platform, where a space in a prefix or npm split it
-- Worker: what a self-test finds of a Claude or Codex release put in place outside the gate is kept only while the CLI still prints it, where a fault went to the release printed at the start
-- Worker: a Claude or Codex moved back to the release before the worker's own switch while it waits on its first self-test keeps the one switched in out as moved back, with no fault laid on it, where it was skipped as rolled back across worker releases
-- Worker: a start that forgets the worker's own Claude or Codex switch, which the CLI no longer prints, frees the npm copy of the release before it, where it stayed until the next switch
-- Tests: a CLI put in place outside the gate is checked against every install step asked for, kept and none allowed, and one the install keeps out is left byte for byte, where a rollback that swallowed its own error passed
-- Tests: the install's copy of a skip whose rollback failed keeps the release out for every profile and says nothing of it being in place, which no test held
-- Worker: a switch an earlier build of the gate kept for a Claude or Codex release put in place outside it is dropped, where it was read as the worker's own and its first fault rolled that release back
-- Worker: a Claude or Codex switch cut short, with another release put in place outside the gate before the next start, is forgotten and that release left in place, where it was moved aside and the release before put back
-- Worker: the worker's own switch of a Claude or Codex release, installed, finished or kept, forgets the skips of it, so a later worker release keeps it out once the CLI is moved back below it again, where it took it forward each hour
-- Worker: a switched Claude or Codex that does not start at first and prints a release other than its own or the one before it when asked again started, put in place outside the gate meanwhile, where it was rolled back
-- Worker: a Claude or Codex release put in place outside the gate while the worker's own switch waits on its first self-test is worked with, the switch forgotten and nothing rolled back or kept out, where its fault rolled the outside release back
-- Worker: a later worker release starting on a Claude or Codex CLI moved back below a release does not say it keeps that release out, as it takes it forward again
-- Docs: a Claude or Codex release put in place outside the worker's gate is worked with and never rolled back, the hello and /health name it with what its checks found, and Claude Code's own updates can stay on
-- Protocol: a hello runtime's skippedRelease names the release in place that something outside the worker's gate put there, outsideGate and inPlace both, with its checks' fault or no words, and outsideGate alone a release kept out as the CLI was moved back below it
-- Worker: imd doctor says a Claude or Codex release put in place outside the gate is worked with and never rolled back, with the fault its checks found, and how to take the work it holds again: install the release last passed on here, or wait for a worker release that knows the new one
-- Worker: a Claude or Codex release put in place outside the worker's own switch is worked with and never rolled back, its self-test deciding the work it takes, and the hello names it as outside the gate with the fault its checks found or none
-- Worker: a Codex helper trip names the release as Codex printed it, a prerelease included, as its tools check does, and the harness doc says an unread version gets every setting
-- Worker: a release the install keeps out, put in place outside the gate, is rolled back at a start under the install's lock, so profiles that start together do not both put it back
-- Docs: a staged release printing a prerelease of itself is skipped, a native Claude build named by its override is left alone, a lock from before a reboot is taken over, and the hello names skips of the runtime tasks run on alone
-- Worker: a native Claude switch cut short, and a rollback's relink, compare the launcher's build with the install's through their links, where a HOME reached through one undid a finished switch
-- Tests: imd start says a release its gate staged and found wrong in a new hello while it goes on working, as cli.ts wires the gate's turn
-- Tests: imd start with the self-test off frees the npm copy of the release before a switch at the restart, and keeps no switch
-- Worker: Claude's installer, run to switch a native install or put one back, names itself beside the install, and a start ends one a killed worker left running before it finishes or undoes the switch
-- Worker: a native Claude whose IDENTITYMD_CLAUDE_BIN names a build itself, not its launcher, is left unmanaged, where each release was rolled back as printing the build it named
-- Worker: a Claude or Codex install's lock written before the system last started is taken over, whatever process now has its pid, where it held the install for a day after a reboot
-- Worker: the hello names no release kept out of a Claude or Codex installed beside the runtime tasks run on, whose gate never runs here
-- Worker: imd doctor says the plane shows a skipped release's words once a seat of another wallet names them too
-- Protocol: a hello's skippedRelease says when as an ISO 8601 time, and one with words of a machine's own there is dropped, as public pages show it
-- Worker: a staged Claude or Codex whose CLI prints a prerelease of the release its package is is skipped as printing another release, where it was switched in, read as undone and taken again each hour
-- Docs: a first self-test that withholds premium work for its runs' tools rolls a switched release back, and a rollback that fails is tried again and named as still in place
-- Docs: a Claude or Codex release put in place outside the worker's gate, Claude Code's own updater on a shared install among them, is rolled back to the release the self-test last passed on, and DISABLE_AUTOUPDATER keeps the two from undoing each other
-- Docs: a release one worker profile skips or rolls back is kept out by every profile on the install, whatever models its config names, and another's switch is settled by each profile's own self-test
-- Worker: a Claude or Codex CLI moved back below the release vouched for here, by Claude's own updater or a hand, keeps that release out for this worker release and names it, where each hour took it again
-- Worker: a Claude or Codex release the install keeps out, put in place outside the gate with no release vouched for here to go back to, is named in the hello as still in place
-- Worker: a Claude or Codex rollback that fails keeps its switch, is tried again at the next self-test and start, and the hello names the release as still in place, as it does one put in place outside the gate
-- Protocol: a hello's skippedRelease may say a release was put in place outside the worker's gate, and that it is still in place, could not be rolled back and runs here
-- Worker: a Claude or Codex release put in place outside this worker's own switch, by another profile, Claude's own updater or a hand, is rolled back to the release its self-test last passed on, at once when the install keeps it out, else once its first self-test finds the release's fault
-- Worker: a Claude or Codex release one profile skipped or rolled back is kept out by every profile on the install, its shared skip held to what the check reads of the worker alone, whatever models a profile's config names
-- Tests: the gate's other checks hold a skip's words to what and where, and its log line alone to the time its check took
-- Worker: a first self-test after a Claude or Codex switch that passes but withholds premium work for its runs' tools rolls the release back, where premium work was not withheld so before the switch
-- Worker: a staged Claude or Codex release's skip is kept and named in the hello without the time its check took, which the log line alone says, so machines with one fault name it in the same words
-- Protocol: a hello's skippedRelease names a release, three numbers and no prerelease, whose parts one machine could fill with words of its own on /health
-- Tests: an install the release before a cut-short switch was fetched again into is compared by its bytes, not its files' times
-- Worker: a switch cut short with the release before it lost as well fetches that release again into its place, where the check before the fetch asked for a package folder no longer there
-- Docs: a staged runtime release is checked on a run with an MCP tool too, and the Codex check's --ephemeral changes none of a run's tools from 0.163.0 on
-- Docs: a runtime switch is tried on a folder of its own before anything is fetched, written down before its first rename, put back only as fingerprinted, and one that does not start is asked again before a rollback
-- Docs: a runtime release npm no longer lists or has deprecated is never picked, a rolled-back one is kept out until what its check reads changes, and with updates off the hello names none
-- Tests: imd start's runtime update path, built and run against a stub plane and a Claude laid out as npm installs it, rolls back, restarts, finishes a cut-short switch and says what it keeps out as cli.ts wires it
-- Worker: the Codex tools check keeps --ephemeral, which changed no tool a run is offered in 216 cases on 0.163.0, 0.164.0 and 0.165.0-alpha.1, and its comment says so and what it would miss
-- Tests: the digest a skip is held to covers how a run with an MCP tool starts, its stand-in named where no machine keeps one
-- Worker: a staged Claude or Codex release is checked on a run with an MCP tool too, through a loopback stdio stand-in, and one whose runs would lose the tool is skipped and named in the hello
-- Worker: an npm or Claude installer step names itself beside the stage while it runs, and the next stage, under the install's lock, ends one a killed worker left running, never a pid another process has since
-- Tests: a worker killed right after npm's second rename has the switch finished at its next start with the bin links pointed as the stage's were
-- Worker: a Claude or Codex switch keeps what it is about to do before its first rename, and a worker killed in the middle of one finishes it or undoes it at its next start, before any probe
-- Worker: an npm rollback, and a switch undone, put back the Claude or Codex package the switch kept only as fingerprinted before it, else fetch that release again, and a native undo checks the build it links back as a rollback does
-- Worker: a Claude or Codex install the switch cannot write is found before a release is fetched or the machine drained, a switch that fails for a reason not the release's is tried once more, and the second in a row keeps the release out and names it in the hello
-- Worker: a switched Claude or Codex release that does not start is asked again, kept and said when a busy machine is why, and rolled back only for what the release does at every try, or after three such starts
+- Worker: imd pair signs its pairing start with the machine's own key, the bare key beside it for a control plane from before
+- Protocol: a device can sign a request for its own pairing code, a pairing.start envelope of a PairingStartRequest
 
-Source commit `944e816a9ed7`.
+Source commit `260efc412cca`.
