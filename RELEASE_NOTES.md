@@ -1,11 +1,11 @@
-# Worker 0.1.8+1d98f47e
+# Worker 0.1.8+ddb63cea
 
-## What changed since worker-v0.1.8-260efc412cca
+## What changed since worker-v0.1.8-1d98f47e11a0
 
-- Docs: Venice for goal items, for contributors and operators
-- Worker: a goal item the plane lets run on Venice goes through a gateway of its own on 127.0.0.1, on the contributor's own key, with Claude Code or Codex as the runtime
-- Protocol: a runtime may name the providers it can run on, a goal item's task the provider it may run through, and a receipt the provider it ran on
-- Worker: a fork check that fails says at startup that the machine is offered the same work
-- Worker: a Codex fork task on Linux reaches its fork from the jail, which admits every socket it mounts there and checks that the rest stay out
+- Worker: Venice has 15 seconds to answer the worker's own reads, at start and before a goal task
+- Worker: a Venice reply cut off in the middle of a tool call says max_tokens, as Anthropic's does
+- Worker: a Venice reply still streaming stops when its task ends or its runtime hangs up
+- Worker: the login's rerun of a failed Venice run starts where that run did
+- Worker: a Venice rate limit past the CLI's retries runs the goal task again on the login
 
-Source commit `1d98f47e11a0`.
+Source commit `ddb63ceaa77b`.
