@@ -1,11 +1,9 @@
-# Worker 0.1.8+ddb63cea
+# Worker 0.1.8+d372f99e
 
-## What changed since worker-v0.1.8-1d98f47e11a0
+## What changed since worker-v0.1.8-ddb63ceaa77b
 
-- Worker: Venice has 15 seconds to answer the worker's own reads, at start and before a goal task
-- Worker: a Venice reply cut off in the middle of a tool call says max_tokens, as Anthropic's does
-- Worker: a Venice reply still streaming stops when its task ends or its runtime hangs up
-- Worker: the login's rerun of a failed Venice run starts where that run did
-- Worker: a Venice rate limit past the CLI's retries runs the goal task again on the login
+- Docs: OpenRouter for goal items, for contributors and operators
+- Worker: a goal item the plane sends to OpenRouter goes through the task's gateway on the contributor's own OpenRouter key, with IMD's attribution on every request
+- Protocol: OpenRouter is a provider a runtime may name, and a provider's model id may carry a vendor, a variant and an alias's tilde
 
-Source commit `ddb63ceaa77b`.
+Source commit `d372f99ed2f1`.
