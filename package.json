@@ -1,6 +1,6 @@
 {
   "name": "@identitymd/worker",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "type": "module",
   "description": "IdentityMD contributor daemon: runs your own Claude Code or Codex against network tasks.",
