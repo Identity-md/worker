@@ -1,9 +1,8 @@
-# Worker 0.1.9+a6eb4461
+# Worker 0.1.9+3dcb4df2
 
-## What changed since worker-v0.1.8-c78f45fe4ce3
+## What changed since worker-v0.1.9-a6eb446119eb
 
-- Worker 0.1.9: a quick answer runs under the read jail
-- Worker: a jailed Claude run whose sandbox refused every shell command it tried sends nothing, and its self-test fails
-- Worker: Claude's jail check nests a user namespace as its sandbox does
+- Protocol: a review sender may report a batch deferred, nothing tried because its writer cannot pay for it at its fee, which costs the batch no attempt
+- Scripts: a goal replay harness: stored bodies with answer keys, a runner that checks them with the plane's own schemas, a watcher that records the baseline, and a grader
 
-Source commit `a6eb446119eb`.
+Source commit `3dcb4df2b7b7`.
