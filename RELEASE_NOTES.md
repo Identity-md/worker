@@ -1,8 +1,9 @@
-# Worker 0.1.9+3dcb4df2
+# Worker 0.1.9+4234b67d
 
-## What changed since worker-v0.1.9-a6eb446119eb
+## What changed since worker-v0.1.9-3dcb4df2b7b7
 
-- Protocol: a review sender may report a batch deferred, nothing tried because its writer cannot pay for it at its fee, which costs the batch no attempt
-- Scripts: a goal replay harness: stored bodies with answer keys, a runner that checks them with the plane's own schemas, a watcher that records the baseline, and a grader
+- Bump postgres from 3.4.9 to 4.0.0
+- Bump croner from 10.0.1 to 11.0.0
+- Bump the npm-minor-and-patch group with 7 updates
 
-Source commit `3dcb4df2b7b7`.
+Source commit `4234b67d2bdd`.
