@@ -1,9 +1,7 @@
-# Worker 0.1.9+4234b67d
+# Worker 0.1.9+f2e4c1e1
 
-## What changed since worker-v0.1.9-3dcb4df2b7b7
+## What changed since worker-v0.1.9-4234b67d2bdd
 
-- Bump postgres from 3.4.9 to 4.0.0
-- Bump croner from 10.0.1 to 11.0.0
-- Bump the npm-minor-and-patch group with 7 updates
+- Protocol: goal tables and goal-dataset@1, a pure reducer giving canonical JSONL and CSV, exact decimal totals and RFC 6962 roots over inputs and rows
 
-Source commit `4234b67d2bdd`.
+Source commit `f2e4c1e1f1cc`.
