@@ -1,8 +1,8 @@
-# Worker 0.1.11+f00a3629
+# Worker 0.1.11+27f56808
 
-## What changed since worker-v0.1.11-06a20c1d797a
+## What changed since worker-v0.1.11-f00a3629f9b3
 
-- Tests: the hung-npm runtime-gate test gives each killed process 2 s to leave the process table before calling it alive
-- Tests: the read-cache refresh and the Codex check-in-wall-clock tests leave a loaded CI runner room, so neither fails on timing alone
+- Contracts: the custody Safe's deployment, and a fork rehearsal that moves every surfsurf.eth role to it and runs the 5a checks
+- Protocol: keeper.claim and keeper.result envelopes, and the keeper's claim, task and result schemas
 
-Source commit `f00a3629f9b3`.
+Source commit `27f5680865af`.
