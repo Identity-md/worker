@@ -1,7 +1,8 @@
-# Worker 0.1.11+06a20c1d
+# Worker 0.1.11+f00a3629
 
-## What changed since worker-v0.1.11-21b41e180a47
+## What changed since worker-v0.1.11-06a20c1d797a
 
-- Protocol: a vetted custody table of its own, Safe, MultiSend, Roles v2, ModuleProxyFactory, Multicall3 and DelegationManager by chain, kept out of the network block sites copy
+- Tests: the hung-npm runtime-gate test gives each killed process 2 s to leave the process table before calling it alive
+- Tests: the read-cache refresh and the Codex check-in-wall-clock tests leave a loaded CI runner room, so neither fails on timing alone
 
-Source commit `06a20c1d797a`.
+Source commit `f00a3629f9b3`.
