@@ -1,0 +1,30 @@
+name: host exposure checks
+on:
+  push:
+    paths:
+      - dist/cli.js
+      - test/host-exposure.test.mjs
+      - .github/workflows/host-exposure.yml
+  pull_request:
+    paths:
+      - dist/cli.js
+      - test/host-exposure.test.mjs
+      - .github/workflows/host-exposure.yml
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    strategy:
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --check dist/cli.js
+      - run: node --test test/host-exposure.test.mjs
