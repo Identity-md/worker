@@ -1,13 +1,13 @@
-# Worker 0.1.15+e63fe50a
+# Worker 0.1.15+5315b319
 
-## What changed since worker-v0.1.15-c344ba4ff4f6
+## What changed since worker-v0.1.15-e63fe50a5dc3
 
-- Worker: goal jobs on a contributor's key take a yes: imd rpc goals off stands, and input that has ended is no answer
-- Worker: piped input answers in order whenever it arrives, and imd rpc setup stops asking once it has ended
-- Tests: the settings restart runs in a describe of its own, past the gate's 90 seconds
-- Docs: imd rpc setup and the worker's own restart
-- Worker: imd rpc setup fills Ethereum, Base and Robinhood Chain from one key, checks each, and asks about goal jobs
-- Worker: a worker with --auto-update restarts itself, once idle, for RPC or provider settings saved while it runs
-- Worker: a prompt holds nothing open once it is answered, so imd rpc add returns to the shell
+- Worker: a jailed media task on Codex can copy the picture its image generation drew, so token-logo and create-image work under the jail again
+- Protocol: BUYBACK_PINS, pinnedAddress and pinsArgument live beside BUYBACK_ARGS, so the juror's scope check can read the same pins the compiler holds
+- Docs: say what the docker line in the public worker README is for
+- Worker: a goal item stops at its cost cap, and every receipt carries what its run cost
+- Protocol: a receipt says what its run cost, a provider task may carry a cost cap, and a runtime says it holds one
+- Docs: the public worker README sets up RPC with imd rpc setup, and describes the relay as it is since 0.1.10
+- Plane: buyback, distribution and vesting intents compile to the canonical owner contracts once CANONICAL_CONTRACTS names a chain
 
-Source commit `e63fe50a5dc3`.
+Source commit `5315b319865b`.

@@ -160,24 +160,39 @@ and committed with a `MEDIA.md` index when the job is delivered to a repository.
 
 ## Your own RPC
 
-Oracle panels scan chains, and a panel of two hundred machines scanning through the same public
-endpoints gets rate-limited: a scan that comes back short disagrees with the rest and the seat is
-lost. If you pay for an endpoint (Alchemy, Infura, QuickNode, your own node), give it to the worker:
+A chain's panels seat machines with their own endpoint first, because two hundred machines scanning
+through the same public endpoints get rate-limited, and a scan that comes back short loses the seat.
+Fork tests, and goal jobs that read a chain's old state, run only on machines with their own.
+One command sets it up:
 
 ```sh
-imd rpc add 1            # asks for the URL without echo and checks it serves chain 1
-imd rpc add 8453
-imd rpc                  # list them, host only
-imd rpc remove 8453
+imd rpc setup
 ```
 
-The URL stays in `~/.identitymd/config.json`, readable by your user alone. Tasks never see it: the
-worker serves each chain on `http://127.0.0.1:<port>/rpc/<chain>` while it runs and forwards to your
-URL, so the address a task writes in its public notes means nothing anywhere else. If your endpoint
-fails (rate-limited, out of capacity, a refused key, a provider error or no answer), the same request
-goes to the public endpoints the task was given, and yours is tried again 30 seconds later. The
-network learns only which chains you have, and seats those chains' panels on your machine first.
-`imd doctor` checks each one. Restart the worker after a change.
+It asks for one Alchemy API key, which covers Ethereum, Base and Robinhood Chain ([free](https://dashboard.alchemy.com/signup)),
+or a URL per chain from any other provider, typed without echo. It checks each endpoint serves its chain and keeps
+the chain's whole history, tells you if a chain is turned off on your Alchemy app, and asks once whether goal jobs may
+read through them. On a machine with all of it, it asks nothing, so it is also the check. If your worker runs in Docker,
+as it does in the IMD Agents app, run it inside: `docker exec -it -u imd imd-worker imd rpc setup`.
+
+A worker started with `--auto-update`, as every start command here is, restarts itself for the change once it is
+idle. Without it, restart the worker. The seat's page on the explorer then shows it.
+
+The URL stays in `~/.identitymd/config.json`, readable by your user alone. Tasks never see it: each task gets an
+address of its own on 127.0.0.1 that only reads, stops at 20,000 calls and ends with the task, so nothing it writes
+in its public notes means anything elsewhere. Goal jobs spend your key, so use a free plan or a limit. If your endpoint
+fails (rate-limited, out of capacity, a refused key, a provider error or no answer), the same request goes to the public
+endpoints the task was given, and yours is tried again 30 seconds later. The network learns only which chains you have,
+whether each keeps its history, and whether goal jobs may use them.
+
+```sh
+imd rpc                  # list them, host only
+imd rpc add 42161        # any other chain, asked for without echo and checked
+imd rpc remove 42161
+imd rpc goals off        # goal jobs back to public endpoints
+```
+
+`imd doctor` checks each one.
 
 ## Updates
 
