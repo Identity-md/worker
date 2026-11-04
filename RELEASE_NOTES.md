@@ -1,7 +1,8 @@
-# Worker 0.1.13+48c1bcfc
+# Worker 0.1.14+212b225e
 
-## What changed since worker-v0.1.13-e2656771aa46
+## What changed since worker-v0.1.13-48c1bcfc1b2c
 
-- Goals: an ask decision puts a question to the oracle through its own door, with the goal prefix, the host probe, and a panel that excludes the author
+- Worker: git the daemon runs after a jailed run reads none of the repository's own configuration or hooks that run wrote
+- Worker 0.1.14: a jailed run starts without the session's runtime folder and bus, so a jailed Linux task is told of no Secret Service
 
-Source commit `48c1bcfc1b2c`.
+Source commit `212b225e006a`.
