@@ -1,12 +1,13 @@
-# Worker 0.1.15+8bb77c84
+# Worker 0.1.16+18543036
 
-## What changed since worker-v0.1.15-553b7590149e
+## What changed since worker-v0.1.15-8bb77c8487a1
 
-- Plane: the escrow's twin reads bondDue, and the anvil test deploys BudgetEscrow linked to its BudgetJury library
-- Paid goals: an earnings epoch excludes its largest payees from its juries, leaves out accounts refunded or due a refund, comes an hour after a stop, and a void epoch frees its units (solidity-auditor)
-- Paid goals: the TypeScript twin commits to an epoch's jury exclusions as the escrow does, and the plane reads the escrow's refund delay with its settings
-- Paid goals: the plane reads stops and refunds from the escrow, refuses a quote into an account stopped on chain, stops a goal its payer stopped on chain, and checks PAID_GOAL_ESCROW against the escrow at boot (solidity-auditor, 1 pass)
-- Paid goals: dry earnings epochs publish what each seat earned as plane-signed IPFS documents an outside party rebuilds from IPFS alone, behind GOAL_EARNINGS_ENABLED=dry
-- Paid goals: goal.open and goal.topup pay a goal's own BudgetEscrow account, the goal seats nothing once its units are spent, and its payer's signed stop ends it, behind PAID_GOAL_ENABLED
+- Worker: a fix step's brief goes by its skill, not a node's key
+- Tests: a task's depth is tested where Claude's sandbox holds
+- Plane: a fix step a requester puts after a review is handed its findings, and after a website runs on that site's checks
+- Verifier: a build leaves a tree's own files in forge's output directory, and readers take only forge's shape
+- Worker and verifier: a link under a directory forge writes to is refused before forge runs
+- Plane and worker: an account Claude or Codex refused is the machine's, in words the lists did not know
+- Worker 0.1.16: a door's Claude task keeps the worker's temp folder, so its sandbox starts and its commands run
 
-Source commit `8bb77c8487a1`.
+Source commit `185430368e43`.
