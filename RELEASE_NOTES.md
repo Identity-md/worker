@@ -1,8 +1,8 @@
-# Worker 0.1.16+d3143025
+# Worker 0.1.16+89159ae2
 
-## What changed since worker-v0.1.16-185430368e43
+## What changed since worker-v0.1.16-d31430257841
 
-- Worker: on a Mac a jailed run's git reads no settings but its repository's, since the jail closes the rest
-- Worker: a Mac's jail re-opens the developer directory its own git and python3 run from
+- Inline config: a Halmos flag on a continued line, a lone carriage return, campaigns' whole checkout
+- Workers and the verifier refuse a test whose inline config could start a program
 
-Source commit `d31430257841`.
+Source commit `89159ae2d474`.
