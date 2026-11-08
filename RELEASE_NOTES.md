@@ -1,9 +1,8 @@
-# Worker 0.1.16+86c49021
+# Worker 0.1.16+6b1a2333
 
-## What changed since worker-v0.1.16-89159ae2d474
+## What changed since worker-v0.1.16-86c49021da79
 
-- Workers and the verifier refuse a foundry.toml that names an external compiler
-- Worker: the format step skips a hard-linked file, and the size bound sits above the function's doc
-- Worker: a Solidity file forge fmt cannot parse goes back as the agent wrote it
+- Worker: doctor's advice to a worker on another Foundry release uses the full path to foundryup
+- Verifier and workers on Foundry 1.9.0, and the install line names the verifier's release
 
-Source commit `86c49021da79`.
+Source commit `6b1a2333b95b`.
