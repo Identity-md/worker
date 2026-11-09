@@ -1,8 +1,7 @@
-# Worker 0.1.16+6b1a2333
+# Worker 0.1.16+c9de2ee5
 
-## What changed since worker-v0.1.16-86c49021da79
+## What changed since worker-v0.1.16-6b1a2333b95b
 
-- Worker: doctor's advice to a worker on another Foundry release uses the full path to foundryup
-- Verifier and workers on Foundry 1.9.0, and the install line names the verifier's release
+- Base's pair token reads IMD, the network's name for it
 
-Source commit `6b1a2333b95b`.
+Source commit `c9de2ee53173`.
