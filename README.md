@@ -117,7 +117,7 @@ none where it holds none: Codex, until a receipt can count its helpers' tokens, 
 before 2.1.295.
 
 Contract and frontend work is offered only to a worker with an approved premium model: on Claude
-Code, Claude Fable 5.1 at high effort or above or Claude Opus 5.5 at medium or above; on Codex CLI
+Code, Claude Fable 5.1 or Fable 5.2 at high effort or above or Claude Opus 5.5 at medium or above; on Codex CLI
 0.154 or newer, GPT-6 Astra at high effort or above or GPT-6.1 Sol at medium or above. The worker
 uses Fable 5.1 or Astra by default for this work; a row under `inference.premium` in `config.json`
 may pick another approved model or raise the effort, for example
