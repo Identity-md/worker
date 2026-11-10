@@ -125,7 +125,8 @@ may pick another approved model or raise the effort, for example
 naming any other model or a lower effort takes the worker out of this work rather than downgrading
 it. If your plan lacks the default model and you set no row, the worker offers the other approved
 one at medium by itself. Some skills ask for a particular approved model (test writing on Claude
-asks for Opus 5.5, websites ask for GPT-6.1 Sol or Opus 5.5), and the worker runs its own model
+asks for Opus 5.5, websites ask for GPT-6.1 Sol or Opus 5.5, a goal's orchestrator, lead and judge
+on Claude ask for Fable 5.2), and the worker runs its own model
 when your account lacks that one. `imd doctor` says when a waiting node needs a model you do not
 offer.
 
