@@ -1,19 +1,14 @@
-# Worker 0.1.27+0026a23a
+# Worker 0.1.28+9fc6a798
 
-## What changed since worker-v0.1.26-b51cee5acc0b
+## What changed since worker-v0.1.27-0026a23a8b0f
 
-- Docs: the source check's two readings, and where a Codex run's model comes from
-- Worker: a Codex run asked for no model names the one its own session ran
-- Worker: a cited passage is looked for in the page as it was served, as well as in its text
-- Deployer: rerun only the pinned recipe, sign a panel recipe only for panel evidence, and wait on an older plane
-- Worker: conditions tests read a feed at the new age floor
-- Protocol: a condition's question is a template only, and its reads leave room past a feed's heartbeat
-- Worker 0.1.27: a juror tries a fresh second endpoint on a disagreement and sends what it read with its approval
-- Protocol: conditions sign their own bounds: a validity window, a block rule, a pinned recipe and a panel floor
-- Launches: a jury treasury is checked against its chain, goes only to a deployer that installs it, and is honoured once paid
-- Jury: an installed jury's approved calls lapse, and the factory installs nothing under 7/5
-- Worker 0.1.27: a juror checks its mandate's conditions before it simulates or signs
-- Protocol: a jury mandate's scope may carry conditions, strict and versioned, evaluated at one block
-- Protocol: jury presets, the launch treasury field and the install factory's calls
+- Worker: a juror refuses a gas mandate whose executor does not run this release's JuryExecutor code
+- Protocol: the release names each chain's gas station factory with the first worker that knows it, and the executor's code by its masked hash
+- Protocol: chains whose gas is not ETH, Arc first
+- Worker 0.1.27: a juror reads a mandate's gas station from the factory its release names, and refuses one the factory did not make
+- Protocol: a gas station is known only by the chain's factory record, pays in the chain's WETH, and keeps its margin under 50,000
+- Worker: a juror signs under a mandate's gas station only when the station on chain pays no more than the owner signed
+- Deployer: DEPLOYER_ROLE=submitter sends a jury action's transactions through its gas station, with a key that holds only gas
+- Protocol: a mandate may name a gas station, and holds its limits to the gas budget the owner signed
 
-Source commit `0026a23a8b0f`.
+Source commit `9fc6a798a5f4`.
