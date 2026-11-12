@@ -1,14 +1,19 @@
-# Worker 0.1.28+9fc6a798
+# Worker 0.1.29+435fe828
 
-## What changed since worker-v0.1.27-0026a23a8b0f
+## What changed since worker-v0.1.28-9fc6a798a5f4
 
-- Worker: a juror refuses a gas mandate whose executor does not run this release's JuryExecutor code
-- Protocol: the release names each chain's gas station factory with the first worker that knows it, and the executor's code by its masked hash
-- Protocol: chains whose gas is not ETH, Arc first
-- Worker 0.1.27: a juror reads a mandate's gas station from the factory its release names, and refuses one the factory did not make
-- Protocol: a gas station is known only by the chain's factory record, pays in the chain's WETH, and keeps its margin under 50,000
-- Worker: a juror signs under a mandate's gas station only when the station on chain pays no more than the owner signed
-- Deployer: DEPLOYER_ROLE=submitter sends a jury action's transactions through its gas station, with a key that holds only gas
-- Protocol: a mandate may name a gas station, and holds its limits to the gas budget the owner signed
+- Worker: claim votes only in a folder that is the signer's alone
+- Protocol and plane: a decision's brief carries its blocks without the closing hash
+- Release the decisions work as worker 0.1.29 and migration 0196
+- Worker: run a decision's task only as a whitelist allows, and claim each question with one exclusive create
+- Protocol: a decision's task in fixed form, and its panel's size the owner's, bound into the question
+- Worker: claim a question in the vote ledger before signing, pin the oracle skill's files, and vote as answers land
+- Protocol: a decision's yes is a majority of its panel, and an answer cites the project's pages by any host it names
+- Worker 0.1.28: one vote a question, a juror user votes through a hand-off, and a decision task is asked only its brief's words
+- Protocol: a decision's members are asked fixed words, and an answer that cites the goal's own pages is told apart
+- Worker 0.1.28: a decision panel member's worker signs its own answer with its seat's juror key
+- Protocol: a decision counts its seats' signed votes against the root on chain, for one nonce of one executor
+- Worker 0.1.28: under a policy mandate a juror verifies the decision the action carries, and never judges
+- Protocol: a jury mandate's scope may carry a policy, and the decision question for an action is built from its calls alone
 
-Source commit `9fc6a798a5f4`.
+Source commit `435fe8286d77`.
