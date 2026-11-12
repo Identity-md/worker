@@ -163,7 +163,9 @@ and committed with a `MEDIA.md` index when the job is delivered to a repository.
 
 A chain's panels seat machines with their own endpoint first, because two hundred machines scanning
 through the same public endpoints get rate-limited, and a scan that comes back short loses the seat.
-Fork tests, and goal jobs that read a chain's old state, run only on machines with their own.
+Fork tests go to machines with their own first; from worker 0.1.26 a machine with none can take one
+through public endpoints, on a recent block, where the plane allows it. Goal jobs that read a chain's
+old state run only on machines with their own.
 One command sets it up:
 
 ```sh
