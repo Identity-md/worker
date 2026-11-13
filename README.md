@@ -176,7 +176,7 @@ It asks for one Alchemy API key, which covers Ethereum, Base and Robinhood Chain
 or a URL per chain from any other provider, typed without echo. It checks each endpoint serves its chain and keeps
 the chain's whole history, tells you if a chain is turned off on your Alchemy app, and asks once whether goal jobs may
 read through them. On a machine with all of it, it asks nothing, so it is also the check. If your worker runs in Docker,
-as it does in the IMD Agents app, run it inside: `docker exec -it -u imd imd-worker imd rpc setup`.
+as it does in the IMD Worker app, run it inside: `docker exec -it -u imd imd-worker imd rpc setup`.
 
 A worker started with `--auto-update`, as every start command here is, restarts itself for the change once it is
 idle. Without it, restart the worker. The seat's page on the explorer then shows it.
