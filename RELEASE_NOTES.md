@@ -1,9 +1,8 @@
-# Worker 0.1.29+ce2215ab
+# Worker 0.1.30+badf3a22
 
-## What changed since worker-v0.1.29-7da676575909
+## What changed since worker-v0.1.29-ce2215ab8a85
 
-- Worker: the screenshot tool's Chromium floor is the release that was stable six months before
-- Worker: the screenshot tool's Chromium floor rises with the date, and imd screenshots off turns the tool off
-- Worker: a jailed site task on a Mac sees its site, through a browser of the worker's in a sandbox of its own
+- Worker 0.1.30 names Sepolia's pilot juror root 0x6aad…2847
+- Worker 0.1.30: name Sepolia's pilot juror root, with a 7/5 floor
 
-Source commit `ce2215ab8a85`.
+Source commit `badf3a227869`.
