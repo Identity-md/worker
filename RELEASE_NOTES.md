@@ -1,8 +1,9 @@
-# Worker 0.1.31+9680c333
+# Worker 0.1.32+227e60b4
 
-## What changed since worker-v0.1.30-70f920b9ab04
+## What changed since worker-v0.1.31-9680c3333bb8
 
-- CI: the scope lists the test parts; forge test runs only for a change that reaches the contracts, and the worker's suite has a runner of its own
-- Worker 0.1.31: a juror signs nothing for a seat its holder in the root no longer owns
+- Worker 0.1.32: the gas station's tip release, after 0.1.30 (the Sepolia juror root) and 0.1.31
+- Worker 0.1.30: a juror holds a gas station's rising tip to the mandate
+- Protocol: a station's record carries its tip, and an action's ceiling and the executor's bond count it
 
-Source commit `9680c3333bb8`.
+Source commit `227e60b4a10f`.
