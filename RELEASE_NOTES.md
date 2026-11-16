@@ -1,13 +1,12 @@
-# Worker 0.1.34+6340c569
+# Worker 0.1.35+89b36762
 
-## What changed since worker-v0.1.33-3a9efcd3de16
+## What changed since worker-v0.1.34-6340c569e5cb
 
-- Worker 0.1.34: uninstall removes the worker's user's folders without root walking them
-- Worker 0.1.34: the newer copy a triggered sync hands over to is never answered by the last sync
-- Worker 0.1.34: a request is answered by the last sync only while the copy is still the release it left
-- Docs: a juror follows its worker's auto-update, and its holder is told when it is behind
-- Linux scenarios: the worker's request brings a juror left behind up to date through root's trigger, and a second request is answered by that sync
-- Worker 0.1.34: a juror follows its worker's auto-update within seconds, and its holder is told when it is behind
-- Protocol: a hello may say what state its juror user's copy of the worker is in
+- Tests: pin the QR cross-check's encoder back to qr 0.5.5
+- Test: the adopted votes folder is made only where the test's user is not alice's uid 1000
+- Juror without systemd: the supervisor's line makes the run folder, then hands it over
+- Worker 0.1.35: the juror setup no longer stops at EPERM in the IMD box
+- Bump the npm-minor-and-patch group with 11 updates
+- CI: the juror sync's journal is read until it settles, so a run that just ended is never read empty
 
-Source commit `6340c569e5cb`.
+Source commit `89b367629909`.
