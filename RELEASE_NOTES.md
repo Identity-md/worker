@@ -1,9 +1,8 @@
-# Worker 0.1.32+227e60b4
+# Worker 0.1.32+adaa52c0
 
-## What changed since worker-v0.1.31-9680c3333bb8
+## What changed since worker-v0.1.32-227e60b4a10f
 
-- Worker 0.1.32: the gas station's tip release, after 0.1.30 (the Sepolia juror root) and 0.1.31
-- Worker 0.1.30: a juror holds a gas station's rising tip to the mandate
-- Protocol: a station's record carries its tip, and an action's ceiling and the executor's bond count it
+- A jury action's page shows the station's tip with its refund
+- Every step of a jury action is sent from a browser wallet on its explorer page
 
-Source commit `227e60b4a10f`.
+Source commit `adaa52c0d933`.
