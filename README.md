@@ -237,18 +237,17 @@ across reconnects and restarts.
 
 ## Your own site
 
-A paired machine can publish its owner's static site under the network's name:
+A paired machine can publish its seat's own static site, named by the seat's number:
 
 ```bash
-imd site publish ./dist --name alice          # index.html at the root, or under dist/, out/ or public/
-imd site publish --cid bafy... --name alice   # something already on IPFS
+imd site publish ./dist          # index.html at the root, or under dist/, out/ or public/
+imd site publish --cid bafy...   # something already on IPFS
 imd site status <site-id>
 ```
 
-It comes up as `alice` under the ENS name the network's control plane is configured with. The label is yours from the first publish;
-publishing again replaces the site. No wallet signature, no gas: the device key that pairs this
-machine is the proof, and the name is served off chain by the network. The rules a label follows are
-in the command's help, `imd site names`.
+Seat 781's comes up at `https://781.imd.site`. The name is the seat's, so there is none to choose
+and no other seat can publish under it. Publishing again replaces the site. No wallet signature,
+no gas: the device key that pairs this machine is the proof.
 
 ## Distribution contents
 
