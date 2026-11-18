@@ -1,7 +1,7 @@
-# Worker 0.1.38+5826f39d
+# Worker 0.1.39+11e05da8
 
-## What changed since worker-v0.1.37-e8b04f36aa22
+## What changed since worker-v0.1.38-5826f39d89ea
 
-- Seat sites: each seat publishes its own site at <seat number>.imd.site
+- Worker 0.1.39: Codex runs on GPT-6.2 may have send_message_to_user_async
 
-Source commit `5826f39d89ea`.
+Source commit `11e05da8c1c9`.
