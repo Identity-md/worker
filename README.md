@@ -118,14 +118,15 @@ before 2.1.295.
 
 Contract and frontend work is offered only to a worker with an approved premium model: on Claude
 Code, Claude Fable 5.1 or Fable 5.2 at high effort or above or Claude Opus 5.5 at medium or above; on Codex CLI
-0.154 or newer, GPT-6 Astra at high effort or above or GPT-6.1 Sol at medium or above. The worker
-uses Fable 5.1 or Astra by default for this work; a row under `inference.premium` in `config.json`
+0.154 or newer, GPT-6 Astra at high effort or above or GPT-6.1 Sol at medium or above, and on Codex
+CLI 0.167 or newer, GPT-6.2 Astra at high or above or GPT-6.2 Sol at medium or above. The worker
+uses Fable 5.2 or GPT-6.2 Astra by default for this work (GPT-6 Astra on a Codex older than 0.167); a row under `inference.premium` in `config.json`
 may pick another approved model or raise the effort, for example
 `"inference": { "premium": { "codex": { "model": "gpt-6-astra", "effort": "max" } } }`, but a row
 naming any other model or a lower effort takes the worker out of this work rather than downgrading
 it. If your plan lacks the default model and you set no row, the worker offers the other approved
 one at medium by itself. Some skills ask for a particular approved model (test writing on Claude
-asks for Opus 5.5, websites ask for GPT-6.1 Sol or Opus 5.5, a goal's orchestrator, lead and judge
+asks for Opus 5.5, websites ask for GPT-6.2 Sol or Opus 5.5, a goal's orchestrator, lead and judge
 on Claude ask for Fable 5.2), and the worker runs its own model
 when your account lacks that one. `imd doctor` says when a waiting node needs a model you do not
 offer.
