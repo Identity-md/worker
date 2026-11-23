@@ -1,7 +1,7 @@
-# Worker 0.1.41+b1124a15
+# Worker 0.1.41+d4c619df
 
-## What changed since worker-v0.1.41-0c50eb332341
+## What changed since worker-v0.1.41-b1124a15bbb2
 
-- Protocol: a goal's treasury request, its mandate signed for a Safe that does not exist yet
+- Goals: a goal's child may run the import's audit and adaptation, each step asking for the jail on worker 0.1.12
 
-Source commit `b1124a15bbb2`.
+Source commit `d4c619dfedc3`.
