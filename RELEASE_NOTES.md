@@ -1,7 +1,8 @@
-# Worker 0.1.41+d4c619df
+# Worker 0.1.41+c253a67b
 
-## What changed since worker-v0.1.41-b1124a15bbb2
+## What changed since worker-v0.1.41-d4c619dfedc3
 
-- Goals: a goal's child may run the import's audit and adaptation, each step asking for the jail on worker 0.1.12
+- Bump the npm-minor-and-patch group with 4 updates
+- Bump the actions group with 2 updates
 
-Source commit `d4c619dfedc3`.
+Source commit `c253a67bf8ef`.
