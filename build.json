@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "repository": "Identity-md/worker",
-  "sourceCommit": "7d29ca1926d5c4a60fff8850637c478a9ad74f32",
+  "sourceCommit": "e59ed87a628a21275f2ece1c5451b12b716d9d07",
   "sourceDirty": false,
-  "inputHash": "a2aceea49edc5794974bc360bf9b673f256f66491e2b7203f69fcf6a8fbc0cf3",
-  "version": "0.1.42",
-  "daemonVersion": "0.1.42+7d29ca19"
+  "inputHash": "6c2c3ece4eef4b46ad9453fb4b4feb6db02eb3269403f3d1d896104e0295fd16",
+  "version": "0.1.43",
+  "daemonVersion": "0.1.43+e59ed87a"
 }
