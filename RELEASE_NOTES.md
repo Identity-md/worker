@@ -1,12 +1,7 @@
-# Worker 0.1.44+84802020
+# Worker 0.1.45+bc2ea6e9
 
-## What changed since worker-v0.1.43-e59ed87a628a
+## What changed since worker-v0.1.44-848020205388
 
-- Worker 0.1.44: a Codex runtime's own platform decides its profile's denied paths, not the host's
-- Worker 0.1.44: consent to an outside desk's repository follows the repository when it moves, not its name
-- Worker 0.1.44: a root worker looks for a GitHub login in every other user's home, and closes each it finds
-- Worker 0.1.44: each GitHub login found is closed to every jailed run by its own path, wherever it is
-- Worker 0.1.44: imd doctor says a GitHub login jails every task here, and fails where the jail does not hold
-- Worker 0.1.44: a machine holding a GitHub login a task could read runs every task jailed, linked or not
+- Worker 0.1.45: prebuilt files are kept where the worker can write them, its home or its config folder
 
-Source commit `848020205388`.
+Source commit `bc2ea6e97f22`.
