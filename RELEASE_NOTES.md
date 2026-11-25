@@ -1,10 +1,12 @@
-# Worker 0.1.43+e59ed87a
+# Worker 0.1.44+84802020
 
-## What changed since worker-v0.1.42-7d29ca1926d5
+## What changed since worker-v0.1.43-e59ed87a628a
 
-- Worker 0.1.43: imd doctor's outside proof desks line fails where a linked machine's jail does not hold
-- Worker 0.1.43: imd github link refuses where the read jail does not hold, and its consent says every task runs jailed
-- Worker 0.1.43: a linked machine whose jail does not hold declines every task and says no link in its hello
-- Worker 0.1.43: a machine linked to its contributor's GitHub account runs every task jailed
+- Worker 0.1.44: a Codex runtime's own platform decides its profile's denied paths, not the host's
+- Worker 0.1.44: consent to an outside desk's repository follows the repository when it moves, not its name
+- Worker 0.1.44: a root worker looks for a GitHub login in every other user's home, and closes each it finds
+- Worker 0.1.44: each GitHub login found is closed to every jailed run by its own path, wherever it is
+- Worker 0.1.44: imd doctor says a GitHub login jails every task here, and fails where the jail does not hold
+- Worker 0.1.44: a machine holding a GitHub login a task could read runs every task jailed, linked or not
 
-Source commit `e59ed87a628a`.
+Source commit `848020205388`.
