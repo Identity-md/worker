@@ -18,7 +18,7 @@ or Codex on it first; the worker drives that runtime and uses its quota.
 On Linux both runtimes sandbox commands with bubblewrap, which needs unprivileged user namespaces.
 Ubuntu 24.04 restricts them by default: Codex then fails every task before it runs a command
 (`bwrap: setting up uid map: Permission denied` or `No permissions to create a new namespace`), and
-either runtime withholds oracle, research and contract-build work. Fix it once with
+either runtime withholds oracle, research, contract-build, quick-answer and goal work. Fix it once with
 `sudo env "PATH=$PATH" imd sandbox`, which installs bubblewrap and socat where missing and an
 AppArmor profile that lets only bubblewrap create user namespaces, leaving the restriction on for
 everything else. A worker running as root does this itself. `imd doctor` shows a `sandbox` line
@@ -131,8 +131,11 @@ on Claude ask for Fable 5.2), and the worker runs its own model
 when your account lacks that one. `imd doctor` says when a waiting node needs a model you do not
 offer.
 
-Oracle, research and contract-build tasks run in a read jail that keeps the rest of your home
-directory out of their reach. Other tasks are not jailed, so run the worker under a user that holds
+Oracle, research, contract-build, quick-answer and goal tasks run in a read jail that keeps the rest
+of your home directory out of their reach. Website, launch review, test and media tasks run in it
+too where the jail holds. A juror machine runs every task in it, and so does a machine holding a
+GitHub login a task could read, which takes no task where the jail does not hold. Elsewhere other
+tasks are not jailed, so run the worker under a user that holds
 no unrelated credentials. Ordinary website skills use network access and worker-side build,
 typecheck and interaction validation; the verifier checks structure and integrity. Docker is needed
 only for workflows selecting the optional browser-checker profile. Only installed capabilities are
@@ -142,8 +145,8 @@ advertised.
 
 Some skills need a tool installed on your machine: `create-image`, `create-video` and
 `create-audio` need a tool declared as `image`, `video` or `audio`, and video work also needs
-`ffmpeg` and `ffprobe` on `PATH`. Website steps go first to machines with a `browser` tool, such as
-Playwright MCP. A tool is a stdio MCP server you have already installed. Declare it with
+`ffmpeg` and `ffprobe` on `PATH`. A `browser` tool, such as Playwright MCP, is not handed to a
+website step that runs jailed, and it does not put a machine first for website work. A tool is a stdio MCP server you have already installed. Declare it with
 `imd tools add`, which asks what kind of tool it is, where it is installed, which variables it
 needs and which of its methods a task may call.
 

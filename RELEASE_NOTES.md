@@ -1,7 +1,7 @@
-# Worker 0.1.47+ec626ba2
+# Worker 0.1.47+de17d8f5
 
-## What changed since worker-v0.1.46-eb819280a220
+## What changed since worker-v0.1.47-ec626ba20390
 
-- Worker 0.1.47: an update goes through when GitHub's API gives no answer, on a higher version number
+- docs: update all docs to match the latest code
 
-Source commit `ec626ba20390`.
+Source commit `de17d8f54046`.
